@@ -1,0 +1,59 @@
+TAP
+
+TAP (*.tap) — формат для хранения образа кассеты. Позволяет хранить данные, сохранённые стандартными процедурами Sinclair BASIC для работы с кассетой на ZX Spectrum. Для хранения данных в нестандартных форматах предназначен более сложный формат TZX.
+
+Файл в формате TAP может содержать один или несколько блоков. Каждый блок состоит из двухбайтового заголовка с длиной последущих данных и непосредственно данных, включая флаги и контрольную сумму. Отдельные TAP-файлы могут легко "склеиваться" вместе, например, командой COPY /B file1.tap + file2.tap all.tap в MS-DOS.
+
+==========================================================================================================
+Offset:  Field type:    Length:   Description:  Additional information:
+
+   0    WORD(LSB,MSB)      2     [data length]  length of the following datablock in bytes (0..65535)
+   2    Tape data    [data length]              data as it is stored on tape, may be a header or
+                                                any data from ZX-Spectrum
+----------------------------------------------------------------------------------------------------------
+
+Valid data blocks - headers (always 19 bytes long):
+
+==========================================================================================================
+case #1: program header or program autostart header - for storing BASIC programs
+
+Offset:  Field type:    Length:   Description:  Additional information:
+
+   0        BYTE           1       flag byte    always 0. Byte indicating a standard ROM loading header
+   1        BYTE           1       data type    always 0: Byte indicating a program header
+   2   ARRAY 10 OF CHAR   10       file name    loading name of the program. filled with spaces (CHR$(32))
+  12        WORD           2     [data length]  length of the following data (after the header)
+                                                = length of BASIC program + variables
+  14        WORD           2    autostart line  LINE parameter of SAVE command. Value 32768 means
+                                                "no auto-loading"; 0..9999 are valid line numbers.
+  16        WORD           2  [program length] 	length of BASIC program; remaining bytes
+                                                  ([data length] - [program length]) = offset of variables
+  18        BYTE           1     checksum byte  simply all bytes (including flag byte) XORed
+
+==========================================================================================================
+case #4: byte header or SCREEN$ header - for storing machine code or screens
+
+Offset:  Field type:    Length:   Description:  Additional information:
+   0        BYTE           1       flag byte    always 0. Byte indicating a standard ROM loading header
+   1        BYTE           1       data type    always 3: Byte indicating a byte header
+   2   ARRAY 10 OF CHAR   10       file name    loading name of the program. filled with spaces (CHR$(32))
+  12        WORD           2     [data length]  length of the following data (after the header)
+                                                in case of a SCREEN$ header = 6912
+  14        WORD           2     start address  in case of a SCREEN$ header = 16384
+  16        WORD           2        unused      = 32768
+  17        BYTE           1     checksum byte  simply all bytes (including flag byte) XORed
+----------------------------------------------------------------------------------------------------------
+
+Valid data blocks - data blocks:
+==========================================================================================================
+case #5: standard data blocks or custom data blocks - (2+[data length]) bytes
+
+Offset:  Field type:    Length:   Description:  Additional information:
+   0        BYTE           1       flag byte    always 255 indicating a standard ROM loading data block or
+                                                any other value to build a custom data block
+   1        BYTE    [data length]  data block   the essential data (may be empty)
+1+[data length] BYTE       1     checksum byte  simply all bytes (including flag byte) XORed
+----------------------------------------------------------------------------------------------------------
+
+http://www.zxmodules.de/fileformats/tapformat.html
+http://zxdocs.fatal.ru/formats/formats.php

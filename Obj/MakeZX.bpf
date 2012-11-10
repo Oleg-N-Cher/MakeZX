@@ -1,0 +1,11 @@
+USE("SYSTEM.h", File);
+USE("CmdLine.h", File);
+USE("Console.h", File);
+USEUNIT("SYSTEM.c");
+USEUNIT("CmdLine.c");
+USEUNIT("Console.c");
+USEUNIT("MakeZX.c");
+//---------------------------------------------------------------------------
+This file is used by the project manager only and should be treated like the project file
+
+main
