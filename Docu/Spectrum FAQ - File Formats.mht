@@ -1,0 +1,2033 @@
+From: <Сохранено Windows Internet Explorer 8>
+Subject: Spectrum FAQ - File Formats
+Date: Thu, 6 Dec 2012 02:37:11 +0200
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CDD35A.97E75510"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.5579
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CDD35A.97E75510
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.nvg.ntnu.no/sinclair/faq/fileform.html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML><HEAD><TITLE>Spectrum FAQ - File Formats</TITLE>
+<META content=3D"text/html; charset=3Diso-8859-1" =
+http-equiv=3DContent-Type>
+<META name=3DGENERATOR content=3D"MSHTML 8.00.6001.22967"></HEAD>
+<BODY aLink=3D#ff0000 link=3D#0000ff bgColor=3D#ffffff text=3D#000000 =
+vLink=3D#660099><A=20
+name=3DTOP></A>
+<P align=3Dcenter><A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/index.html">[FAQ]</A><BR><A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/faqs.html">[Frequently&nbsp;A=
+sked&nbsp;Questions]</A>=20
+<A =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/resource.html">[Resources]</A=
+> <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emulator.html">[Emulators]</A=
+> <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/where_is.html">[Where&nbsp;Is=
+...?]</A>=20
+[File&nbsp;Formats] <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/technica.html">[Technical&nbs=
+p;Information]</A>=20
+<A =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/pinouts.html">[Pinouts]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/acknowle.html">[Acknowledgeme=
+nts]</A>=20
+</P>
+<TABLE width=3D"100%" bgColor=3D#eeeeaa>
+  <TBODY>
+  <TR>
+    <TH><FONT size=3D+3>SPECCY EMULATOR FILE =
+FORMATS</FONT></TH></TR></TBODY></TABLE>
+<P align=3Dcenter>This page last updated on 2 May 2000</P>
+<CENTER>
+<P align=3Dcenter><A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SNAPS">[Snapsho=
+ts]</A>=20
+<A =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SLT">[SLT]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SNA">[SNA]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SNA128">[SNA&nb=
+sp;128]</A>=20
+<A =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SP">[SP]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#Z80">[Z80]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#ZX">[ZX]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#ZX82">[ZX82]</A=
+> <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#ZXS">[ZXS]</A> =
+<BR><A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TAPES">[Tapes]<=
+/A> <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#ITM">[ITM]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TAPZ">[TAP/BLK]=
+</A> <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TAPW">[TAP&nbsp=
+;(Warajevo)]</A>=20
+<A =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TZX">[TZX]</A> =
+<BR><A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#DISKS">[Disks]<=
+/A> <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#DSK">[DSK]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#FDI">[FDI]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#HOBETA">[Hobeta=
+]</A> <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#IMG">[IMG]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#MGT">[MGT]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SCL">[SCL]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TRD">[TRD]</A> =
+<BR><A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#OTHERS">[Others=
+]</A> <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#AZX">[AZX]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#DCK">[DCK]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#MDR">[MDR]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#NET">[NET]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#PAL">[PAL]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#POK">[POK]</A> =
+<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SCR">[SCR]</A> =
+
+</P></CENTER><!--web2text-ignore-until-here-->
+<P>If you need information on a format which is not documented here, try =
+reading=20
+the documentation which comes with a emulator which supports that =
+format; if you=20
+are looking for some code to load/save these formats, some good sources =
+of=20
+information are <A=20
+href=3D"ftp://ftp.nvg.ntnu.no/pub/sinclair/utils/generic/spconv-110.zip">=
+SpConv</A>=20
+(public domain), and <A=20
+href=3D"http://www.ast.cam.ac.uk/~pak/spectrum/snapconv.html">SnapConv</A=
+>=20
+(GPL)</P><A name=3DSNAPS></A>
+<TABLE width=3D"100%" bgColor=3D#f0f0b0>
+  <TBODY>
+  <TR>
+    <TH><FONT size=3D+1>Snapshot Files</FONT></TH></TR></TBODY></TABLE>
+<P>Those handled by SPConv v1.10 are in <I>italics</I>:</P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>.ACH or .archimedes
+    <TD>Snapshots used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_arch.html#SPECCY">!Speccy=
+</A>.=20
+      .ACH is the extension SPConv uses for these files, so that=20
+      filename-challenged operating systems like DOS can handle such =
+files for=20
+      conversion purposes.=20
+  <TR>
+    <TD>.PRG
+    <TD>Snapshots used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SPECTRUMEMULATOR=
+">SpecEm</A>.=20
+
+  <TR>
+    <TD>.RAW
+    <TD>Raw memory dump from a real Spectrum; just the 48Kb of RAM and a =
+CODE=20
+      header on the front.=20
+  <TR>
+    <TD>.SEM
+    <TD>Snapshots used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#ZXSPECTRUMEMULAT=
+OR">ZX=20
+      Spectrum-Emulator</A>.=20
+  <TR>
+    <TD><I>.SIT</I>
+    <TD>Snapshots used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SINCLAIR">Sincla=
+ir</A>.=20
+
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SLT">.SLT</A>
+    <TD>Super level loader snapshot. Used by many emulators these days;=20
+      basically a v2/3 .Z80 snapshot with level data appended.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SNA"><I>.SNA =
+or=20
+      .snap or .snapshot</I></A>
+    <TD>Mirage Microdrive snapshot format, used by most emulators.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SNA128">.SNA</A=
+>
+    <TD>128Kb version of SNA. Distinguished by file size of 131103 bytes =
+
+      instead of 49179 bytes for 48Kb version.=20
+  <TR>
+    <TD><I>.SNX</I>
+    <TD>Extended version of .SNA, used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_atar.html#SPECCY">Speccy<=
+/A>=20
+      on the Atari ST.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SP"><I>.SP</I><=
+/A>
+    <TD>Snapshots used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SPECTRUM">Spectr=
+um</A>=20
+      and its earlier version, VgaSpec.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#Z80"><I>.Z80</I=
+></A>
+    <TD>Snapshots used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A> =
+and=20
+      many other emulators. Three versions in existence, the latest of =
+which=20
+      (v3/SLT) is not supported by all emulators. Very flexible; support =
+for=20
+      SamRam, 128K snapshots, etc.=20
+  <TR>
+    <TD><I>.ZX</I>
+    <TD>Snapshots used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_amig.html#KGB">KGB</A>.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#ZXS">.ZXS</A>
+    <TD>Snapshot format used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_win.html#ZX32">zx32</A>; =
+
+      .ZXS 'snapshots' can also contain tape and disk images, but are =
+unrelated=20
+      to the .ZXS <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TAPES">tape=20
+      format</A>.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#ZX82">.ZX82</A>=
+
+    <TD>Snapshots used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_amig.html#SPECULATOR97">S=
+peculator=20
+      '97</A>. </TR></TBODY></TABLE>
+<P>For the purposes of these descriptions, the following definitions =
+apply:</P>
+<P><I>byte</I> =3D byte-sized variable; <I>word</I> =3D 2 bytes, =
+<I>long</I> =3D 4=20
+bytes. All stored in little-endian (Intel) format unless otherwise =
+stated.</P><A=20
+name=3DSLT></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.SLT (Super Level loader Trap used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_win.html#WSPECEM">WSpecEm=
+</A>,=20
+      <A =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A>=20
+      &amp; others) </TH></TR></TBODY></TABLE>
+<P>The level loader trap has one annoying disadvantage; lots of extra =
+files=20
+lying around for each game. The super level loader was thought up (by <A =
+
+href=3D"http://www.jetman.dircon.co.uk/speccy/">Damien Burke</A>) to =
+replace this=20
+multi-file format with a single snapshot file containing all the level =
+data=20
+files. It has been designed in co-operation with James McKay (<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>),=
+ Gerton=20
+Lunter (<A =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A>),=20
+Rui Ribeiro (<A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_win.html#WSPECEM">WSpecEm=
+</A>) and=20
+Darren Salt (helping with <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_arch.html#Z80EM">Z80Em</A=
+>), so is=20
+well-supported already. The format was designed with future expansion in =
+mind,=20
+as you will see.</P><PRE>            Size   Description
+   =
+------------------------------------------------------------------------
+            varies bytes  Z80 snapshot (version 2+)
+            3      bytes  Three null bytes (compatibility; see below)
+            3      bytes  "SLT" (signature)
+   ---- the following blocks make up a table to access the data files =
+-----
+            2      word   data type (0 =3D end of table, 1 =3D level =
+data)
+            2      word   data identifier (for type 1 this is level =
+number)
+            4      long   data length
+            2      word   data type (0 =3D end of table, 1 =3D level =
+data)
+            2      word   data identifier (for type 1 this is level =
+number)
+            4      long   data length
+            ... and so on
+   ---- the following blocks are the data files themselves =
+----------------
+            varies bytes data
+            varies bytes data
+            ... and so on
+   =
+------------------------------------------------------------------------
+</PRE>
+<P>The three null bytes after the end of the snapshot are for =
+compatibility=20
+reasons; older versions of Z80 would crash if the extra data was just =
+appended=20
+to the snapshot. With these three null bytes, they just complain about =
+an error=20
+in the snapshot file instead. This, of course, presumes you have renamed =
+the=20
+.SLT file to .Z80 and attempted to load it into an older emulator!</P>
+<P>After the "SLT" signature, there is a table of data types and sizes. =
+Only=20
+data types 0 (end of table) and 1 (level data) are supported at the =
+moment, so=20
+if other values are encountered an emulator should ignore that data =
+block.</P>
+<P>To read a level data file using .SLT, the emulator should find the =
+correct=20
+entry in the table (type =3D 1, identifier matching the A register when =
+the ED/FB=20
+instruction was encountered), get its size from the table and calculate =
+its=20
+position from the total of sizes of data blocks previous to the required =
+one,=20
+added to the position of the end of the table. E.g., to load level 2 =
+from a .SLT=20
+snapshot with this table:</P><PRE>   Position  Size  Value  Description
+   =
+------------------------------------------------------------------------
+   40000     2     1      data type =3D level data
+   40002     2     1      data identifier =3D level 1
+   40004     4     256    data length =3D 256 bytes
+   40008     2     1      data type =3D level data
+   40010     2     2      data identifier =3D level 2
+   40012     4     128    data length =3D 128 bytes
+   40016     2     0      data type =3D end of table
+   40018     2     *      data identifier =3D unused (may as well be =
+zero)
+   40020     4     *      data length =3D  unused (may as well be zero)
+   40024     256   *      data block for level 1
+   40280     128   *      data block for level 2
+   =
+------------------------------------------------------------------------
+   (* =3D could be anything)
+</PRE>
+<P>So, the size of level 2 is 128 bytes, and its located at the end of =
+the table=20
+(40024) + the length of all previous blocks (just 256 here) =3D =
+40280.</P>
+<P>Level data is packed in the same way as Z80 snapshot memory banks =
+are.</P>
+<P>The trainspotter award seekers of you may wonder why a whole word is =
+used for=20
+the data identifier; after all, this is the level number and is held in =
+the A=20
+register, so could be just a byte. For level data, correct. But future =
+expansion=20
+is better served by a word. For the same reasons, the data length is =
+held as a=20
+long word instead of just a word; level data will never exceed 64Kb =
+(indeed,=20
+could not even be as much as 48Kb), but future data types may do so. One =
+
+example; embedding a scan of a game's inlay card in the file is =
+possible, and=20
+that file could exceed 64Kb easily.</P>
+<P>See <A href=3D"http://www.jetman.dircon.co.uk/speccy/edfb.html">this =
+page</A>=20
+for Damien Burke's proposals for future data types for inclusion in .SLT =
+
+snapshots.</P><A name=3DSNA></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.SNA, .snap or .snapshot (Mirage Microdrive format used by many=20
+      emulators) </TH></TR></TBODY></TABLE>
+<P>This format is the most well-supported of all snapshot formats =
+(though Z80 is=20
+close on its heels) but has a drawback:</P>
+<P>As the program counter is pushed onto the stack so that a RETN =
+instruction=20
+can restart the program, 2 bytes of memory are overwritten. This will =
+usually=20
+not matter; the game (or whatever) will have stack space that can be =
+used for=20
+this. However, if this space is all in use when the snap is made, memory =
+below=20
+the stack space will be corrupted. According to Rui Ribeiro, the effects =
+of this=20
+can sometimes be avoided by replacing the corrupted bytes with zeros; =
+e.g. take=20
+the PC from the, stack pointer, replace that word with 0000 and then =
+increment=20
+SP. This worked with snapshots of Batman, Bounder and others which had =
+been=20
+saved at critical points. Theoretically, this problem could cause a =
+complete=20
+crash on a real Spectrum if the stack pointer happened to be at address =
+16384;=20
+the push would try and write to the ROM. How different emulators handle =
+this is=20
+not something I know...</P>
+<P>When the registers have been loaded, a RETN command is required to =
+start the=20
+program. IFF2 is short for interrupt flip-flop 2, and for all practical =
+purposes=20
+is the interrupt-enabled flag. Set means enabled.</P><PRE>   Offset   =
+Size   Description
+   =
+------------------------------------------------------------------------
+   0        1      byte   I
+   1        8      word   HL',DE',BC',AF'
+   9        10     word   HL,DE,BC,IY,IX
+   19       1      byte   Interrupt (bit 2 contains IFF2, 1=3DEI/0=3DDI)
+   20       1      byte   R
+   21       4      words  AF,SP
+   25       1      byte   IntMode (0=3DIM0/1=3DIM1/2=3DIM2)
+   26       1      byte   BorderColor (0..7, not used by Spectrum 1.7)
+   27       49152  bytes  RAM dump 16384..65535
+   =
+------------------------------------------------------------------------
+   Total: 49179 bytes
+</PRE><A name=3DSNA128></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.SNA (128Kb version) (SP_EMU) </TH></TR></TBODY></TABLE>
+<P>This is simply the SNA format extended to include the extra memory =
+banks of=20
+the 128K/+2 machines, and fixes the problem with the PC being pushed =
+onto the=20
+stack - now it is located in an extra variable in the file (and is not =
+pushed=20
+onto the stack at all). The first 49179 bytes of the snapshot are =
+otherwise=20
+exactly as described above, so the full description is:</P><PRE>   =
+Offset   Size   Description
+   =
+------------------------------------------------------------------------
+   0        27     bytes  SNA header (see above)
+   27       16Kb   bytes  RAM bank 5 \
+   16411    16Kb   bytes  RAM bank 2  } - as standard 48Kb SNA file
+   32795    16Kb   bytes  RAM bank n / (currently paged bank)
+   49179    2      word   PC
+   49181    1      byte   port 7FFD setting
+   49182    1      byte   TR-DOS rom paged (1) or not (0)
+   49183    16Kb   bytes  remaining RAM banks in ascending order
+   ...
+   =
+------------------------------------------------------------------------
+   Total: 131103 or 147487 bytes
+</PRE>
+<P>The third RAM bank saved is always the one currently paged, even if =
+this is=20
+page 5 or 2 - in this case, the bank is actually included twice. The =
+remaining=20
+RAM banks are saved in ascending order - e.g. if RAM bank 4 is paged in, =
+the=20
+snapshot is made up of banks 5, 2 and 4 to start with, and banks 0, 1, =
+3, 6 and=20
+7 afterwards. If RAM bank 5 is paged in, the snapshot is made up of =
+banks 5, 2=20
+and 5 again, followed by banks 0, 1, 3, 4, 6 and 7.</P><A name=3DSP></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.SP (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SPECTRUM">Spectr=
+um</A>)=20
+    </TH></TR></TBODY></TABLE><PRE>   Offset   Size   Description
+   =
+------------------------------------------------------------------------
+   0        2      byte   "SP" (signature)
+   2        2      word   Program length in bytes (normally 49152 for =
+48K
+                          snaps, or 16384 for 16K snaps)
+   4        2      word   Program location (normally 16384)
+   6        8      word   BC,DE,HL,AF
+   14       4      word   IX,IY
+   18       8      word   BC',DE',HL',AF'
+   26       2      byte   R,I
+   28       4      word   SP,PC
+   32       2      word   0 (reserved for future use)
+   34       1      byte   Border color
+   35       1      byte   0 (reserved for future use)
+   36       2      word   Status word
+   =
+------------------------------------------------------------------------
+
+   Status word:
+   Bit     Description
+   =
+------------------------------------------------------------------------
+   15-8    Reserved for future use
+    7-6    Reserved for internal use (0)
+      5    Flash: 0=3DINK/1=3DPAPER
+      4    Interrupt pending for execution
+      3    If 1, IM 0; if 0, bit 1 determines interrupt mode
+           (<A =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SPECTRUM">Spectr=
+um</A> v 0.99e had this behaviour reversed, and this
+           bit was not used in versions previous to v 0.99e)
+      2    IFF2 (internal use)
+      1    Interrupt Mode (if bit 3 reset): 0=3D&gt;IM1, 1=3D&gt;IM2
+      0    IFF1: 0=3DDI/1=3DEI
+</PRE><A name=3DZ80></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.Z80 (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A>) =
+[from=20
+      Z80 documentation]</TH></TR></TBODY></TABLE>
+<P>The old .Z80 snapshot format (for version 1.45 and below) looks like=20
+this:</P><PRE>        Offset  Length  Description
+        ---------------------------
+        0       1       A register
+        1       1       F register
+        2       2       BC register pair (LSB, i.e. C, first)
+        4       2       HL register pair
+        6       2       Program counter
+        8       2       Stack pointer
+        10      1       Interrupt register
+        11      1       Refresh register (Bit 7 is not significant!)
+        12      1       Bit 0  : Bit 7 of the R-register
+                        Bit 1-3: Border colour
+                        Bit 4  : 1=3DBasic SamRom switched in
+                        Bit 5  : 1=3DBlock of data is compressed
+                        Bit 6-7: No meaning
+        13      2       DE register pair
+        15      2       BC' register pair
+        17      2       DE' register pair
+        19      2       HL' register pair
+        21      1       A' register
+        22      1       F' register
+        23      2       IY register (Again LSB first)
+        25      2       IX register
+        27      1       Interrupt flipflop, 0=3DDI, otherwise EI
+        28      1       IFF2 (not particularly important...)
+        29      1       Bit 0-1: Interrupt mode (0, 1 or 2)
+                        Bit 2  : 1=3DIssue 2 emulation
+                        Bit 3  : 1=3DDouble interrupt frequency
+                        Bit 4-5: 1=3DHigh video synchronisation
+                                 3=3DLow video synchronisation
+                                 0,2=3DNormal
+                        Bit 6-7: 0=3DCursor/Protek/AGF joystick
+                                 1=3DKempston joystick
+                                 2=3DSinclair 2 Left joystick (or user
+                                   defined, for version 3 .Z80 files)
+                                 3=3DSinclair 2 Right joystick
+</PRE>
+<P>Because of compatibility, if byte 12 is 255, it has to be regarded as =
+being=20
+1. After this header block of 30 bytes the 48K bytes of Spectrum memory =
+follows=20
+in a compressed format (if bit 5 of byte 12 is one). The compression =
+method is=20
+very simple: it replaces repetitions of at least five equal bytes by a =
+four-byte=20
+code ED ED xx yy, which stands for "byte yy repeated xx times". Only =
+sequences=20
+of length at least 5 are coded. The exception is sequences consisting of =
+ED's;=20
+if they are encountered, even two ED's are encoded into ED ED 02 ED. =
+Finally,=20
+every byte directly following a single ED is not taken into a block, for =
+example=20
+ED 6*00 is not encoded into ED ED ED 06 00 but into ED 00 ED ED 05 00. =
+The block=20
+is terminated by an end marker, 00 ED ED 00.</P>
+<P>That's the format of .Z80 files as used by versions up to 1.45. =
+Starting from=20
+version 2.0, a different format is used, since from then on also 128K =
+snapshots=20
+had to be supported. This new format is used for all snapshots, either =
+48K or=20
+128K.</P>
+<P>Version 2.01 and 3.0 .Z80 files start with the same 30 byte header as =
+old=20
+.Z80 files used. Bit 4 and 5 of the flag byte have no meaning anymore, =
+and the=20
+program counter (byte 6 and 7) are zero to signal a version 2.01 or =
+version 3.0=20
+snapshot file.</P>
+<P>After the first 30 bytes, the additional header follows:</P><PRE>     =
+   Offset  Length  Description
+        ---------------------------
+      * 30      2       Length of additional header block (see below)
+      * 32      2       Program counter
+      * 34      1       Hardware mode (see below)
+      * 35      1       If in SamRam mode, bitwise state of 74ls259.
+                        For example, bit 6=3D1 after an OUT 31,13 =
+(=3D2*6+1)
+                        If in 128 mode, contains last OUT to 7ffd
+      * 36      1       Contains 0FF if Interface I rom paged
+      * 37      1       Bit 0: 1 if R register emulation on
+                        Bit 1: 1 if LDIR emulation on
+      * 38      1       Last OUT to fffd (soundchip register number)
+      * 39      16      Contents of the sound chip registers
+        55      2       Low T state counter
+        57      1       Hi T state counter
+        58      1       Flag byte used by Spectator (QL spec. emulator)
+                        Ignored by Z80 when loading, zero when saving
+        59      1       0FF if MGT Rom paged
+        60      1       0FF if Multiface Rom paged. Should always be 0.
+        61      1       0FF if 0-8191 is ROM, 0 if RAM
+        62      1       0FF if 8192-16383 is ROM, 0 if RAM
+        63      10      5x keyboard mappings for user defined joystick
+        73      10      5x ascii word: keys corresponding to mappings =
+above
+        83      1       MGT type: =
+0=3DDisciple+Epson,1=3DDisciple+HP,16=3DPlus D
+        84      1       Disciple inhibit button status: 0=3Dout, =
+0ff=3Din
+        85      1       Disciple inhibit flag: 0=3Drom pageable, =
+0ff=3Dnot
+</PRE>
+<P>The value of the word at position 30 is 23 for version 2.01 files, =
+and 54 for=20
+version 3.0 files. The starred fields are the ones that constitute the =
+version=20
+2.01 header, and their interpretation has remained unchanged except for =
+byte=20
+34:</P><PRE>        Value:          Meaning in v2.01        Meaning in =
+v3.0x
+        --------------------------------------------------------
+        0               48k                     48k
+        1               48k + If.1              48k + If.1
+        2               SamRam                  SamRam
+        3               128k                    48k + M.G.T.
+        4               128k + If.1             128k
+        5               -                       128k + If.1
+        6               -                       128k + M.G.T.
+</PRE>
+<P>The documenation for versions 3.00 to 3.02 of Z80 had the entries for =
+
+'SamRam' and '48k + M.G.T.' in the second column of the above table =
+reversed;=20
+also bytes 61 and 62 of the format were wrong up to version 3.04. (The =
+snaps=20
+produced by the older versions of Z80 still follow what is above; the=20
+documentation for the older versions is wrong).</P>
+<P>The hi T state counter counts up modulo 4. Just after the ULA =
+generates its=20
+once-in-every-20-ms interrupt, it is 3, and is increased by one every 5 =
+emulated=20
+milliseconds. In these 1/200s intervals, the low T state counter counts =
+down=20
+from 17471 to 0 (17726 in 128K modes), which make a total of 69888 =
+(70908) T=20
+states per frame.</P>
+<P>The 5 ASCII words (high byte always 0) at 73-82 are the keys =
+corresponding to=20
+the joystick directions left, right, down (!), up (!), fire =
+respectively. Shift,=20
+Symbol Shift, Enter and Space are denoted by [,],/,\ respectively. The =
+ascii=20
+values are used only to display the joystick keys; the information in =
+the 5=20
+keyboard mapping words determine which key is actually pressed (and =
+should=20
+correspond to the ascii values). The low byte is in the range 0-7 and =
+determines=20
+the keyboard row. The high byte is a mask byte and determines the =
+column. Enter=20
+for example is stored as 0x0106 (row 6 and column 1) and 'g' as 0x1001 =
+(row 1=20
+and column 4).</P>
+<P>Byte 60 must be zero, because the contents of the Multiface RAM is =
+not saved=20
+in the snapshot file. If the Multiface was paged when the snapshot was =
+saved,=20
+the emulated program will most probably crash when loaded back.</P>
+<P>Bytes 61 and 62 are a function of the other flags, such as byte 34, =
+59, 60=20
+and 83.</P>
+<P>Hereafter a number of memory blocks follow, each containing the =
+compressed=20
+data of a 16K block. The compression is according to the old scheme, =
+except for=20
+the end-marker, which is now absent. The structure of a memory block =
+is:</P><PRE>        Byte    Length  Description
+        ---------------------------
+        0       2       Length of compressed data (without this 3-byte =
+header)
+                        If length=3D0xffff, data is 16384 bytes long and =
+not compressed
+        2       1       Page number of block
+        3       [0]     Data
+</PRE>
+<P>The pages are numbered, depending on the hardware mode, in the =
+following=20
+way:</P><PRE>        Page    In '48 mode     In '128 mode    In SamRam =
+mode
+        ------------------------------------------------------
+         0      48K rom         rom (basic)     48K rom
+         1      Interface I, Disciple or Plus D rom, according to =
+setting
+         2      -               rom (reset)     samram rom (basic)
+         3      -               page 0          samram rom (monitor,..)
+         4      8000-bfff       page 1          Normal 8000-bfff
+         5      c000-ffff       page 2          Normal c000-ffff
+         6      -               page 3          Shadow 8000-bfff
+         7      -               page 4          Shadow c000-ffff
+         8      4000-7fff       page 5          4000-7fff
+         9      -               page 6          -
+        10      -               page 7          -
+        11      Multiface rom   Multiface rom   -
+</PRE>
+<P>In 48K mode, pages 4,5 and 8 are saved. In SamRam mode, pages 4 to 8 =
+are=20
+saved. In '128 mode, all pages from 3 to 10 are saved. There is no end=20
+marker.</P>
+<P><A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#WARAJEVO">Waraje=
+vo</A>=20
+writes v2 .Z80 files, but with some extensions to deal with its Timex =
+2068=20
+emulation:</P>
+<UL>
+  <LI>Byte 34: 128 signifies Timex 2068 emulation is active.=20
+  <LI>Byte 35: If Timex 2068 is active, last OUT to port 244.=20
+  <LI>Byte 36: If Timex 2068 is active, last OUT to port 255. </LI></UL>
+<P><A =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx</A> =
+has=20
+also made various extensions to the .Z80 format:=20
+<UL>
+  <LI>The AY registers are always saved into .Z80 snapshots, independent =
+of the=20
+  emulated machine. Bit 2 of byte 37 being set signifies that this =
+feature is in=20
+  use.=20
+  <LI>+3 snapshots: The hardware field is written as '7', and a 55th =
+byte is=20
+  added to the header, which stores the last byte output to #1FFD. This =
+55th=20
+  byte is added to all snapshots, which causes many other emulators to =
+reject=20
+  them. If you have this problem, <A=20
+  =
+href=3D"http://www.ast.cam.ac.uk/~pak/spectrum/snapconv.html">SnapConv</A=
+> may=20
+  be able to help. Also, some versions of xzx could write a value of 8 =
+to=20
+  hardware field, but this should also be treated as a +3.=20
+  <LI>A hardware field of '9' signifies Pentagon emulation, whilst '10'=20
+  signifies Scorpion emulation. The Pentagon snapshots are (to quote =
+from xzx's=20
+  ChangeLog) "pretty much the same as standard 128K ones", whilst those =
+for the=20
+  Scorpion consist of 16 RAM pages. </LI></UL><A name=3DZX></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.ZX (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_amig.html#KGB">KGB</A>)=20
+      [Contributed by Troels Norgaard]</TH></TR></TBODY></TABLE>
+<P>All values stored in big-endian format; on 680x0 the most significant =
+byte=20
+goes first.</P><PRE>   Offset   Size   Description
+   =
+------------------------------------------------------------------------
+   0        49284  bytes  RAM dump 16252..65535
+   49284    132    bytes  unused, make 0
+   49416    10     word   10,10,4,1,1 (different settings)
+   49426    1      byte   InterruptStatus (0=3DDI/1=3DEI)
+   49427    2      byte   0,3
+   49429    1      byte   ColorMode (0=3DBW/1=3DColor)
+   49430    4      long   0
+   49434    16     word   BC,BC',DE,DE',HL,HL',IX,IY
+   49450    2      byte   I,R
+   49452    2      word   0
+   49454    8      byte   0,A',0,A,0,F',0,F
+   49462    8      word   0,PC,0,SP
+   49470    2      word   SoundMode (0=3DSimple/1=3DPitch/2=3DRomOnly)
+   49472    2      word   HaltMode  (0=3DNoHalt/1=3DHalt)
+   49474    2      word   IntMode   (-1=3DIM0/0=3DIM1/1=3DIM2)
+   49476    10     bytes  unused, make 0
+   =
+------------------------------------------------------------------------
+   Total: 49486 bytes
+</PRE><A name=3DZX82></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.ZX82 (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_amig.html#SPECULATOR97">S=
+peculator=20
+      '97</A>) [Taken from the Speculator =
+documentation]</TH></TR></TBODY></TABLE>
+<P>Amiga Speculator has its own file format which I have called ZX82 =
+format=20
+because it contains a file identifier in the first four bytes consisting =
+of the=20
+ASCII characters "ZX82". The format has a 12 byte header which contains =
+the=20
+normal Spectrum type file information like length, type, start etc. as =
+well as a=20
+compression flag which is set if the file is byte run compressed. =
+Snapshot files=20
+have a further 32 bytes of register values and border colour =
+information. Listed=20
+below are the offset definitions taken from the Speculator source code =
+in case=20
+you need to write a conversion utility. All registers and other values =
+are in=20
+Motorola format (High, Low). I have defined everything in bytes to avoid =
+any=20
+possible confusion.</P><PRE>* The Standard ZX82 Header
+ZX_ID           rs.l    1       Identifier for a Speculator file "ZX82"
+ZX_Type         rs.b    1       0:BASIC 1:Numeric 2:String 3:Code =
+4:Snapshot
+ZX_Comp         rs.b    1       Is data block byte run compressed ? =
+$00=3DNo $FF=3DYes
+ZX_Length_H     rs.b    1       File length up to 64k (ELINE-PROG for =
+BASIC)
+ZX_Length_L     rs.b    1
+ZX_Start_H      rs.b    1       Start address for code (AUTOSTART for =
+BASIC)
+ZX_Start_L      rs.b    1
+ZX_ProgLen_H    rs.b    1       Array name (VARS-PROG for BASIC)
+ZX_ProgLen_L    rs.b    1
+ZX_ZXHdrLen     rs.b    0       Length of ZX file header
+ZX_ZXData       rs.b    0       Start of Data block for standard ZX file
+
+* The extended Snapshot ZX82 Header
+ZX_Border       rs.b    1       Border colour
+ZX_IntMode      rs.b    1       IntMode over-ride (0=3Duse i_reg, =
+1=3Dim1 and 2=3Dim2)
+ZX_Registers    rs.b    0       Z80 register values for Snapshot Files
+ZX_iy_H_reg     rs.b    1       (High then Low i.e. Motorola format)
+ZX_iy_L_reg     rs.b    1
+ZX_ix_H_reg     rs.b    1
+ZX_ix_L_reg     rs.b    1
+ZX_de_H_reg     rs.b    1
+ZX_de_L_reg     rs.b    1
+ZX_bc_H_reg     rs.b    1
+ZX_bc_L_reg     rs.b    1
+ZX_hl_H_reg     rs.b    1
+ZX_hl_L_reg     rs.b    1
+ZX_af_H_reg     rs.b    1
+ZX_af_L_reg     rs.b    1
+ZX_de_H_alt     rs.b    1
+ZX_de_L_alt     rs.b    1
+ZX_bc_H_alt     rs.b    1
+ZX_bc_L_alt     rs.b    1
+ZX_hl_H_alt     rs.b    1
+ZX_hl_L_alt     rs.b    1
+ZX_af_H_alt     rs.b    1
+ZX_af_L_alt     rs.b    1
+ZX_sp_H_reg     rs.b    1
+ZX_sp_L_reg     rs.b    1
+ZX_if_H_reg     rs.b    1
+ZX_if_L_reg     rs.b    1
+ZX_rf_H_reg     rs.b    1
+ZX_rf_L_reg     rs.b    1
+ZX_pc_H_reg     rs.b    1
+ZX_pc_L_reg     rs.b    1
+ZX_SnpHdrLen    rs.b    0       Length of Snapshot file header
+ZX_SnpData      rs.b    65496   Start of data block for Snapshot type
+file
+</PRE>
+<P>The ZX_Type field is derived from the MGT disciple directory =
+MGT_Type-1, so=20
+further file types may be supported in this way in the future.</P>
+<P>The compression used is the standard byte run compression as used by =
+ILBM IFF=20
+files. The whole 48k data block is compressed as if it were one long =
+row. See=20
+Amiga ROM Kernel Reference Manual: Devices Third Edition, Appendix A - =
+IFF=20
+Specification (P347), Appendix C - Example Packer C code (P538).</P><A=20
+name=3DZXS></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.ZXS (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_win.html#ZX32">zx32</A>) =
+
+  </TH></TR></TBODY></TABLE>
+<P>The latest specification for .ZXS files can be found on the <A=20
+href=3D"http://www.geocities.com/SiliconValley/Bay/9932/">zx32 Home =
+Page</A>. Note=20
+that there is also a .ZXS tape format (see below), but this is =
+completely=20
+unrelated to this format.</P><A name=3DTAPES></A>
+<TABLE width=3D"100%" bgColor=3D#f0f0b0>
+  <TBODY>
+  <TR>
+    <TH><FONT size=3D+1>Tape Files</FONT></TH></TR></TBODY></TABLE>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TAPZ">.BLK</A>
+    <TD>Tape format used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SINCLAIR">Sincla=
+ir</A>;=20
+      identical to Z80's .TAP files.=20
+  <TR>
+    <TD>.SPC
+    <TD>Tape format used by <A=20
+      href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SP">the =
+Polish=20
+      emulator</A>.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#ITM">.ITM</A>
+    <TD>Format apparently used by <B>Intermega</B> on the MSX.=20
+  <TR>
+    <TD>.PAN
+    <TD>Supplementary file used by the <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#ITM">.ITM</A>=20
+      format.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TAPZ">.TAP</A>
+    <TD>Tape format used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A> =
+and=20
+      many others.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TAPW">.TAP</A>
+    <TD>Tape format used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#WARAJEVO">Waraje=
+vo</A>.=20
+
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TZX">.TZX</A>
+    <TD>New tape format used to store turbo-loaders, etc.=20
+  <TR>
+    <TD>.VOC
+    <TD>Straight sound sample of a tape; used by several emulators.=20
+  <TR>
+    <TD>.ZXS
+    <TD>Very flexible tape format, not actually used by any emulators - =
+used=20
+      to store real Spectrum tapes in a digital format. All come from =
+the <A=20
+      href=3D"http://www.zx.ru/zx.ru/">ZX Spectrum Software=20
+  Museum</A>.<BR><BR></TR></TBODY></TABLE><A name=3DITM></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.ITM and .PAN (Used by Intermega on the MSX) =
+</TH></TR></TBODY></TABLE>
+<P>The format starts with a two byte header; the first byte specifies =
+the number=20
+of tape blocks in this file, and the second specifies which block has =
+some data=20
+contained in the supplementary .PAN file. (This byte is zero if there is =
+no data=20
+in the .PAN file).=20
+<P>A sequence of tape blocks then follows; each block has a four byte =
+header.=20
+The first byte of the header is the LSB of the length of the block, =
+excluding=20
+the four byte header), the second byte is the MSB of the length, the =
+third byte=20
+is unknown (the high nibble is always 0110), and the fourth byte is the =
+block=20
+number (the first block is number 1). The data then follows; this is =
+exactly as=20
+would be produced by the Speccy's ROM routine, apart from the fact that =
+there is=20
+no checksum byte at the end.=20
+<P>For the block which is marked in the second byte of the file as =
+having data=20
+in the .PAN file, the actual block length is 12295 (0x3007) bytes longer =
+than=20
+specified in the .ITM file. The final 12295 bytes of the data block are =
+stored=20
+as the first 12295 bytes of the .PAN file.=20
+<P>Finally, note that both the .ITM and .PAN files have apparently =
+random bytes=20
+at the end. A converter for converting .ITM/.PAN files to Z80's <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TAPZ">.TAP</A> =
+format is=20
+available <A=20
+href=3D"http://www.ast.cam.ac.uk/~pak/spectrum/itm2tap.html">here</A>.</P=
+><A=20
+name=3DTAPZ></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.TAP/.BLK (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SINCLAIR">Sincla=
+ir</A>=20
+      &amp; many others) [from Z80 =
+documentation]</TH></TR></TBODY></TABLE>
+<P>The .TAP files contain blocks of tape-saved data. All blocks start =
+with two=20
+bytes specifying how many bytes will follow (not counting the two length =
+bytes).=20
+Then raw tape data follows, including the flag and checksum bytes. The =
+checksum=20
+is the bitwise XOR of all bytes including the flag byte. For example, =
+when you=20
+execute the line SAVE "ROM" CODE 0,2 this will result:</P><PRE>          =
+   |------ Spectrum-generated data -------|       |---------|
+
+       13 00 00 03 52 4f 4d 7x20 02 00 00 00 00 80 f1 04 00 ff f3 af a3
+
+       ^^^^^...... first block is 19 bytes (17 bytes+flag+checksum)
+             ^^... flag byte (A reg, 00 for headers, ff for data blocks)
+                ^^ first byte of header, indicating a code block
+
+       file name ..^^^^^^^^^^^^^
+       header info ..............^^^^^^^^^^^^^^^^^
+       checksum of header .........................^^
+       length of second block ........................^^^^^
+       flag byte ............................................^^
+       first two bytes of rom .................................^^^^^
+       checksum (checkbittoggle would be a better name!).............^^
+</PRE>
+<P>Note that it is possible to join .TAP files by simply stringing them=20
+together, for example COPY /B FILE1.TAP + FILE2.TAP ALL.TAP</P>
+<P>For completeness, I'll include the structure of a tape header. A =
+header=20
+always consists of 17 bytes:</P><PRE>        Byte    Length  Description
+        ---------------------------
+        0       1       Type (0,1,2 or 3)
+        1       10      Filename (padded with blanks)
+        11      2       Length of data block
+        13      2       Parameter 1
+        15      2       Parameter 2
+</PRE>
+<P>The type is 0,1,2 or 3 for a Program, Number array, Character array =
+or Code=20
+file. A SCREEN$ file is regarded as a Code file with start address 16384 =
+and=20
+length 6912 decimal. If the file is a Program file, parameter 1 holds =
+the=20
+autostart line number (or a number &gt;=3D32768 if no LINE parameter was =
+given)=20
+and parameter 2 holds the start of the variable area relative to the =
+start of=20
+the program. If it's a Code file, parameter 1 holds the start of the =
+code block=20
+when saved, and parameter 2 holds 32768. For data files finally, the =
+byte at=20
+position 14 decimal holds the variable name.</P><A name=3DTAPW></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.TAP (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#WARAJEVO">Waraje=
+vo</A>)=20
+      [from <A href=3D"mailto:megaribi@bih.net.ba.no.junk.mail">Samir=20
+  Ribic</A>]</TH></TR></TBODY></TABLE>
+<P>Warajevo's tape files (TAP) has the format as follows:</P>
+<P>At the beginning of the file there are four bytes with the pointer to =
+the=20
+first block. Then follow four bytes with pointer to the last block. The =
+next=20
+four bytes contain #FFFFFFFF. So, empty tape has a format:</P><PRE>   =
+#04 #00 #00 #00 #00 #00 #00 #00 #FF #FF #FF #FF
+</PRE>
+<P>Sequence #00 #00 #00 #00 #FF #FF #FF #FF is, in fact, a EOF (end of =
+file)=20
+marker. Every block contains following:</P>
+<UL>
+  <LI>4 bytes, a pointer to the previous block, which is 0 for first =
+block;=20
+  <LI>4 bytes, a pointer to the next block or to the EOF marker for last =
+block;=20
+  <LI>2 bytes, block size;=20
+  <LI>1 byte, a flag byte;=20
+  <LI>the data bytes. </LI></UL>
+<P>If the block size is 65534, it is a block which contains tone record =
+samples.=20
+The structure is:</P>
+<UL>
+  <LI>4 bytes, a pointer to the previous block, which is 0 for first =
+block.=20
+  <LI>4 bytes, pointer to the next block, or to the EOF marker for last =
+block.=20
+  <LI>2 bytes, value 65534.=20
+  <LI>1 byte, a status byte; bits B0-B2 in this byte contain =
+informations which=20
+  tell how many bits in the last byte in the block are used (number of =
+used bits=20
+  is, in fact, number stored in B0-B2 increased by one), bits B3-B4 =
+contain=20
+  informations about sampling frequency (with meaning 00 - 15000 Hz, 01 =
+- 22050=20
+  Hz, 10 - 30303 Hz, 11 - 44100 Hz), and bits B5-B7 are not used.=20
+  <LI>2 bytes, decompressed (logical) block size.=20
+  <LI>2 bytes, compressed (psychical) block size; if these 2 lengths are =
+equal,=20
+  the block is not compressed.=20
+  <LI>2 bytes, signature length (internal, for compressed blocks).=20
+  <LI>the samples (binary), 8 samples are packed into one byte (starting =
+from B7=20
+  to B0); whole package of such sample bytes may be either compressed or =
+
+  uncompressed (the last byte need not contain all 8 bits). </LI></UL>
+<P>If bytes 9, 10, 11 and 12 into a TAP file are not equal to #FF, this =
+is TAP=20
+file which is not in native Warajevo TAP format. In this case, Warajevo =
+assumes=20
+<A href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TAPZ">Z80's =
+.TAP=20
+format</A>.</P>
+<P>If the block size is 65535, it is a compressed block. It looks =
+like:</P>
+<UL>
+  <LI>4 bytes, a pointer to the previous block;=20
+  <LI>4 bytes, pointer to next block;=20
+  <LI>2 bytes, 65535;=20
+  <LI>1 byte, a flag byte;=20
+  <LI>2 bytes, decompressed size;=20
+  <LI>2 bytes, compressed size;=20
+  <LI>2 bytes, signature length (internal);=20
+  <LI>the data bytes. </LI></UL>
+<P>Signatures are important for the imploding algorithm used by =
+Warajevo. This=20
+algorithm, when decompressing, copies bytes from the source file, or =
+returns for=20
+a few bytes, and copies some bytes from a destination file.</P>
+<P>The explaination of compressed data bytes is rather complex. We used =
+format=20
+similar to those in PKLITE, but unlike PKLITE where signature bytes are =
+mixed=20
+with data bytes, authors divided them in two parts, for easier =
+debugging.</P>
+<P>Remember elements of Imploding (LZ77) algorithm. It depends on =
+copying of=20
+some byte sequences. For example:</P><PRE>   3D 18 2E 42 3D 18 2E 15 42 =
+3D 19
+</PRE>
+<P>will be encoded as:</P><PRE>   3D 18 2E 42 &lt;Return for 4 bytes and =
+copy 3 bytes&gt;
+   15 &lt;Return for 5,copy 2&gt; 19
+</PRE>
+<P>The archivers differs on way of encoding of this special 'Return =
+for...'=20
+code.</P>
+<P>In Warajevo compressed format, there are two parts: signatures and =
+data. In=20
+our example coding of signatures will be (binary):</P><PRE>   00001001 =
+010100xx
+</PRE>
+<P>while data bytes will be</P><PRE>   3D 18 2E 42 04 15 05 19
+</PRE>
+<P>The signatures are finite automat that describe what to do with data =
+bytes.=20
+If the bit is 0, this is simple data byte, if the bit is 1 this is code =
+for=20
+returning.</P>
+<P>In our example, four zeros in signatures means that four bytes can be =
+simply=20
+copied (3D, 18, 2E, 42) to output buffer. The next bit is 1. This means: =
+Return=20
+for xxxx bytes and copy yyyy.</P>
+<P>The value of yyyy (size of string to be copied) is in signatures if =
+less than=20
+10 or in signatures and data bytes if greater of equal 10.</P>
+<P>The size depends on next 2-4 signature bits:</P><PRE>    010: =
+size=3D2
+     00: size=3D3
+    100: size=3D4
+    101: size=3D5
+    011: size&gt;=3D10
+   1100: size=3D6
+   1101: size=3D7
+   1110: size=3D8
+   1111: size=3D9
+</PRE>
+<P>If size is greater or equal than 10, the next data byte contains =
+actual=20
+size-10. That means: maximal string size is 265.</P>
+<P>The next data byte determine lower byte of distance of string to be =
+copied=20
+(lower byte of xxxx). If size=3D2, higher bit is always zero (so for =
+this size=20
+distance can be maximally 255). If size differs from 2 the next 1-6 =
+signature=20
+bits determine higher byte:</P><PRE>        1: higher byte=3D0
+     0000: higher byte=3D1
+     0001: higher byte=3D2
+    00100: higher byte=3D3
+    00101: higher byte=3D4
+    00110: higher byte=3D5
+    00111: higher byte=3D6
+   01nnnn: higher byte=3D7+nnnn
+</PRE>
+<P>Experiment with some ASCII text compressed. There is algorithm in =
+Pascal for=20
+decompressing to understand the format:</P><PRE>procedure decompress_b;
+label
+  lb,b0,b1,b11,b01,b10,b110,b111,b010,b00,b100,b101,b011,b1100,
+  b1101,b1110,b1111,v,v0,v1,v00,v01,v000,v001,v0000,v0001,v00100,v00101,
+  v00110,v00111,v0010,v0011,izlaz;
+
+var
+  b,put:byte;
+  bytes,return_for,i,auxilary:word;
+  finished:Boolean;
+begin
+  OutputBufEnd:=3D0;
+  CurrPosInputBuffer:=3DSignatureSize+1;
+  CurrentSignaturePosition:=3D0;
+  CurrentSignature:=3DInputBuffer^[CurrentSignaturePosition];
+  BitCounter:=3D0;
+  if duzina_ul_dek=3D0 then finished:=3Dtrue else finished:=3Dfalse;
+  while not finished do begin
+    if nextbit=3D0 then begin
+      TakeFromInputBuffer(b,finished);
+      PutToOutputBuffer(b);
+    end
+     else begin
+       I know, it is  goto, but more readable than
+        nested if then else sequences
+        lb: if nextbit=3D0 then goto b0 else goto b1;
+        b0: if nextbit=3D0 then goto b00 else goto b01;
+        b1: if nextbit=3D0 then goto b10 else goto b11;
+        b11: if nextbit=3D0 then goto b110 else goto b111;
+        b01: if nextbit=3D0 then goto b010 else goto b011;
+        b10: if nextbit=3D0 then goto b100 else goto b101;
+        b110: if nextbit=3D0 then goto b1100 else goto b1101;
+        b111: if nextbit=3D0 then goto b1110 else goto b1111;
+        b010: bytes:=3D2;
+          TakeFromInputBuffer(b,finished);
+          return_for:=3Db;
+          goto izlaz;
+        b00: bytes:=3D3;goto v;
+        b100: bytes:=3D4;goto v;
+        b101: bytes:=3D5;goto v;
+        b011: TakeFromInputBuffer(b,finished);
+          bytes:=3Db+10;goto v;
+        b1100: bytes:=3D6;goto v;
+        b1101: bytes:=3D7;goto v;
+        b1110: bytes:=3D8;goto v;
+        b1111: bytes:=3D9;goto v;
+        v: TakeFromInputBuffer(b,finished);
+        return_for:=3Db;
+        if nextbit=3D0 then goto v0 else goto v1;
+        v0: if nextbit=3D0 then goto v00 else goto v01;
+        v1:goto izlaz;
+        v00: if nextbit=3D0 then goto v000 else goto v001;
+        v01: Auxsilary:=3D7;
+          if nextbit=3D1 then Auxsilary:=3DAuxsilary+8;
+          if nextbit=3D1 then Auxsilary:=3DAuxsilary+4;
+          if nextbit=3D1 then Auxsilary:=3DAuxsilary+2;
+          if nextbit=3D1 then Auxsilary:=3DAuxsilary+1;
+          return_for:=3Dreturn_for+256*Auxsilary;
+          goto izlaz;
+        v000: if nextbit=3D0 then goto v0000 else goto v0001;
+        v001: if nextbit=3D0 then goto v0010 else goto v0011;
+        v0010: if nextbit=3D0 then goto v00100 else goto v00101;
+        v0011: if nextbit=3D0 then goto v00110 else goto v00111;
+        v0000: return_for:=3Dreturn_for+1*256;goto izlaz;
+        v0001: return_for:=3Dreturn_for+2*256;goto izlaz;
+        v00100: return_for:=3Dreturn_for+3*256;goto izlaz;
+        v00101: return_for:=3Dreturn_for+4*256;goto izlaz;
+        v00110: return_for:=3Dreturn_for+5*256;goto izlaz;
+        v00111: return_for:=3Dreturn_for+6*256;goto izlaz;
+        izlaz:
+        for i:=3D1 to bytes do begin
+          put:=3DOutputBuffer^[OutputBufEnd-return_for+1];
+          PutToOutputBuffer(put)
+        end;
+     end else
+  end while
+end; decompress_b
+</PRE>
+<P>Complex? Yes it is. I spent more than 30 days in developing =
+algorythm,=20
+analysing of some archivers, optimizing compression speed (it is still =
+slow, but=20
+acceptable) , and I worked mostly on paper, because it was in hardest =
+days of=20
+summer 1993, without electric power, water and food (in this time I =
+losed 1kg=20
+weekly), when only miracle saved Sarajevo of fall. In this time I had =
+not leave=20
+the army building, and while I waited for a new battle tasks I developed =
+the=20
+compression algorythm.</P><A name=3DTZX></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.TZX (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx =
+v2</A>=20
+      &amp; others) </TH></TR></TBODY></TABLE>
+<P>.TZX files are a format developed by Tomaz Kac to allow the storage =
+of games=20
+with non-standard loaders in a format <B>much</B> smaller than .VOC =
+files. The=20
+full specification can be found at <A=20
+href=3D"http://www.void.demon.nl/TZXformat.html">World of =
+Spectrum</A>.</P><A=20
+name=3DDISKS></A>
+<TABLE width=3D"100%" bgColor=3D#f0f0b0>
+  <TBODY>
+  <TR>
+    <TH><FONT size=3D+1>Disk Files</FONT></TH></TR></TBODY></TABLE>
+<P></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#DSK">.DSK</A>
+    <TD>Generic disk image format, used for +3 disks by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx</A> =
+and=20
+      others.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#FDI">.FDI</A>
+    <TD>Image of a TR-DOS disk, used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SP_UKV">UKV=20
+      Spectrum Debugger</A>.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#HOBETA">.$<I>?<=
+/I></A>
+    <TD>Hobeta image of a TR-DOS file; used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx</A>=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#IMG">.IMG</A>
+    <TD>Image of a Disciple/+D disk, used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#MGT">.MGT</A>
+    <TD>Image of a Disciple/+D disk, used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SCL">.SCL</A>
+    <TD>Image of a collection of TR-DOS files, used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx</A>. =
+
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#TRD">.TRD</A>
+    <TD>Image of a TR-DOS disk, used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx</A> =
+and=20
+      others.<BR><BR></TR></TBODY></TABLE><A name=3DDSK></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.DSK (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx =
+v2</A>=20
+      &amp; others) </TH></TR></TBODY></TABLE>
+<P>See the specification at Kevin Thacker's <A=20
+href=3D"http://andercheran.aiind.upv.es/~amstrad/File_Formats/dsk_definit=
+ion.html">Unofficial=20
+Amstrad WWW Resource</A> (.DSK files were originally used on some of the =
+Amstrad=20
+CPC emulators).</P><A name=3DFDI></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.FDI (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#SP_UKV">UKV=20
+      Spectrum Debugger</A>) </TH></TR></TBODY></TABLE>
+<P>[Translated from UKV Spectrum Debugger's documentation by <A=20
+href=3D"mailto:Mac_Buster@mail.ru.no.junk.mail">Mac Buster</A>]</P><PRE> =
+  Offset   Field size    Description =20
+
+    0x00       0x03       Text "FDI"
+    0x03       0x01       Write protection (0: write enabled; 1: =
+disabled)
+    0x04       0x02       Number of cylinders
+    0x06       0x02       Number of heads
+    0x08       0x02       Offset of disk description
+    0x0A       0x02       Data offset
+    0x0C       0x02       Length of additional information in header. =
+(UKV
+                          uses 00)
+    0x0E       (x)        Additional information; length is specified in =
+the
+                          previous field.
+    0x0E+(x)              Track headers area. This section contains all
+                          information on the disk format. This area must
+                          contain at least "Number of cylinders"*"Number =
+of
+                          heads" headers. The headers are stored in the
+                          sequence Cyl 0 Head 0; Cyl 0 Head 1; Cyl 1 =
+Head 0
+                          etc.
+   (Description offset)   A description of the disk terminated with 0x00 =
+can
+                          be placed here; the MAKEFDI utility (supplied =
+by
+                          UKV) allows for up to 64 characters, including
+                          the terminating null.
+   (Data offset)          The actual disk data. The size and sequence =
+depends
+                          on the disk format.
+
+</PRE>
+<P align=3Dcenter>Track header format</P><PRE>   Offset   Field size    =
+Description
+
+    0x00       0x04       Track offset: the offset of the track data, =
+relative
+                          to the data offset defined above.
+    0x04       0x02       (Always 0x0000)
+    0x06       0x01       Number of sectors on this track.
+    0x07   (Sectors*7)    Sector infomation:
+                          Bytes 00-03 give the cylinder number, head =
+number,
+			  sector size (00: 128 bytes; 01: 256; 02: 512; 03:
+                          1024; 04: 4096) and sector number =
+respectively.
+                          Byte 04 contains the flags:
+   		            Bits 0-5 are CRC marks: if the CRC was correct for
+   			    a sector size 128,256,512,1024 or 4096, then the
+			    respective bit will be set. If all bits are 0 then
+                            there was a CRC error when this sector was
+                            written.
+		            Bit 6 is always 0.
+		            Bit 7 is 0 for normal data, or 1 for deleted data.
+		          Bytes 05-06 give the sector offset, relative to
+		          (data offset+track offset)			=20
+   7*(Sectors+1)          Track header length
+
+</PRE>
+<P>Note that UKV 1.2 does not use the flag byte.</P><A =
+name=3DHOBETA></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>Hobeta </TH></TR></TBODY></TABLE>
+<P>[From <A href=3D"mailto:Mac_Buster@mail.ru.no.junk.mail">Mac =
+Buster</A>]</P>
+<P>Hobeta files (which use the extension <TT>.$<I>?</I></TT>) is simply =
+an image=20
+of a TR-DOS file, rather than a complete disk; it is just the file with =
+a=20
+17-byte header:</P><PRE>  Offset      Name       Size       Description
+
+   0x00     FileName     0x08      TR-DOS file name
+   0x08     FileType     0x01      TR-DOS file type
+   0x09     StartAdr     0x02      start address of file
+   0x0A     FlLength     0x02      length of file (in bytes)
+   0x0C     FileSize     0x02      size of file (in sectors)=20
+   0x0E     HdrCRC16     0x02      Control checksum of the 15 byte
+                                   header (not sector data!)
+</PRE>
+<UL>
+  <LI>A Hobeta file cannot be smaller than 256+17 bytes, or larger than =
+65280+17=20
+  bytes (as a TR-DOS file can have be a maximum of 255 sectors long). =
+The file=20
+  must be a 17+a multiple of 256 bytes long.=20
+  <LI>The MSB of the 'FileSize' field <B>must</B> be 0x00.=20
+  <LI>The BASIC Autostart parameter is stored in the last sector of the=20
+  <B>BASIC</B> part of the file (all TR-DOS files are organized as =
+'monoloader')=20
+  after 0x80 and 0xAA bytes.=20
+  <LI>Some C pseudo-code for calculating 'HdrCRC16' is: <PRE>   =
+CheckSum=3D0;
+   for (i=3D0; i&lt;=3D14; CheckSum =3D CheckSum + (header[i] * 257) + =
+i, i++);
+</PRE></LI></UL><A name=3DIMG></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.IMG (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>) =
+
+  </TH></TR></TBODY></TABLE>
+<P>This is just a simple dump of a Disciple/+D disk, in the order:</P>
+<UL>
+  <LI>Side 0, Track 0=20
+  <LI>Side 0, Track 1=20
+  <LI>Side 0, Track 2=20
+  <LI>etc...=20
+  <LI>Side 0, Track 79=20
+  <LI>Side 1, Track 0=20
+  <LI>Side 1, Track 1=20
+  <LI>etc...=20
+  <LI>Side 1, Track 79 </LI></UL><A name=3DMGT></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.MGT (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>) =
+
+  </TH></TR></TBODY></TABLE>
+<P>Again, this is just a simple dump of a Disciple/+D disk, but in the=20
+order:</P>
+<UL>
+  <LI>Side 0, Track 0=20
+  <LI>Side 1, Track 0=20
+  <LI>Side 0, Track 1=20
+  <LI>etc...=20
+  <LI>Side 0, Track 79=20
+  <LI>Side 1, Track 79 </LI></UL><A name=3DSCL></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.SCL </TH></TR></TBODY></TABLE>
+<P>[From <A href=3D"mailto:Mac_Buster@mail.ru.no.junk.mail">Mac =
+Buster</A>]</P>
+<P>The first 8 bytes of the file is the ASCII string "SINCLAIR"; the 9th =
+byte is=20
+the number of TR-Dos files contained in the file. There then follows a =
+14 byte=20
+long descriptor for each file in archive:</P><PRE>     8 bytes - file =
+name
+     1 byte  - file type
+     2 bytes - start address
+     2 bytes - file length in bytes
+     1 byte  - file size in sectors (each sector is 256 bytes)
+</PRE>
+<P>After all the descriptors follows the sector data and after that a 4 =
+bytes=20
+long simple sum (not a checksum!) of all the previous bytes in the file. =
+Please=20
+note that a TR-Dos file cannot be longer that 255 sectors; each sector =
+is 256=20
+bytes long, so maximum file size is be 65280 bytes.</P><A =
+name=3DTRD></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.TRD (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#X128">x128</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx =
+v2</A>=20
+      &amp; others) </TH></TR></TBODY></TABLE>
+<P>See the <A=20
+href=3D"http://www.retroplay.com/Mecenate/ramsoft/tr-info.zip">TR-DOS =
+System=20
+Info</A> from <A=20
+href=3D"http://www.retroplay.com/Mecenate/ramsoft/">Ramsoft</A>.</P><A=20
+name=3DOTHERS></A>
+<TABLE width=3D"100%" bgColor=3D#f0f0b0>
+  <TBODY>
+  <TR>
+    <TH><FONT size=3D+1>Other Files</FONT></TH></TR></TBODY></TABLE>
+<P></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#AZX">.AZX</A>
+    <TD>New format designed for storing sound from Spectrum programs.=20
+  <TR>
+    <TD>.DAT
+    <TD>Data files used by level-loader versions of a game (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_arch.html#Z80EM">Z80Em</A=
+>=20
+      does not use a .DAT extension at all; instead files are just =
+numbered,=20
+      e.g. "1" instead of "GAME1.DAT").=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#DCK">.DCK</A>
+    <TD>Used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#WARAJEVO">Waraje=
+vo</A>=20
+      for Timex memory expansions.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#MDR">.MDR</A>
+    <TD>Microdrive cartridge file as used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A> =
+and <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx =
+v2</A>=20
+      amongst others.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#NET">.NET</A>
+    <TD>Used by <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#WARAJEVO">Waraje=
+vo</A>=20
+      for the Interface I Network.=20
+  <TR>
+    <TD>.OUT
+    <TD>OUT logs from <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A>.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#POK">.POK</A>
+    <TD>Poke files used by the <A=20
+      href=3D"http://www.void.demon.nl/sgd.html">Spectrum Games =
+Database</A>.=20
+  <TR>
+    <TD><A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/fileform.html#SCR">.SCR</A>
+    <TD>Screendumps from <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_win.html#WSPECEM">WSpecEm=
+</A>=20
+      and others.<BR><BR></TR></TBODY></TABLE><A name=3DAZX></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.AZX (none yet) </TH></TR></TBODY></TABLE>
+<P>AZX files are a new format devised by <A=20
+href=3D"mailto:Mac_Buster@mail.ru.no.junk.mail">Mac Buster</A> for =
+storing sound=20
+output from Spectrum programs. The specification can be found at <A=20
+href=3D"http://www.void.demon.nl/AZXformat.txt">World of =
+Spectrum</A>.</P><A=20
+name=3DDCK></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.DCK (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#WARAJEVO">Waraje=
+vo</A>)=20
+    </TH></TR></TBODY></TABLE>
+<P>DCK files keeps information about memory content of various Timex =
+memory=20
+expansions, and information which chunks of extra memory are RAM chunks =
+and=20
+which chunks are ROM chunks. Such files have relatively simple format. =
+At the=20
+beginning of a DCK file, a nine-byte header is located. First byte is =
+the bank=20
+ID which has the following meaning:</P><PRE>   0:     DOCK bank (the =
+most frequent variant)
+   1-253: Reserved for expansions which allow more than three 64 Kb
+          banks (currently not implemented)
+   254:   EXROM bank (using this ID you may insert RAM or ROM chunks
+          into EXROM bank; such hardware exists for the real TS2068)
+   255:   HOME bank (mainly useless, HOME content is typically stored in =
+a Z80
+          file); however, using this bank ID you may replace content of =
+Timex
+          HOME ROM, or turn Timex HOME ROM into RAM
+</PRE>
+<P>This numbering of banks is in according to convention used in various =
+
+routines from the TS2068 ROM. After the first byte, following eight =
+bytes=20
+corresponds to eight 8K chunks in the bank. Organization of each byte is =
+as=20
+follows:</P><PRE>   bit  D0:    0 =3D read-only chunk, 1 =3D read/write =
+chunk
+   bit  D1:    0 =3D memory image for corresponding chunk is not present =
+in DCK
+               file, 1 =3D memory image is present in DCK file
+   bits D2-D7: reserved (all zeros)                                      =
+ =20
+</PRE>
+<P>To be more precise, these bytes will have the following values:</P>
+<UL>
+  <LI>0, for non-existent chunks (reading from such chunks must return =
+default=20
+  values for given bank; for example, #FF in DOCK bank, and ghost images =
+of 8K=20
+  Timex EXROM in EXROM bank).=20
+  <LI>1, for RAM chunks, where initial RAM content is not given (in =
+Warajevo,=20
+  such chunks will be initially filled with zeros)=20
+  <LI>2, for ROM chunks=20
+  <LI>3, for RAM chunks where initial RAM content is given (this is need =
+to=20
+  allow saving content of expanded RAM; also this is useful for =
+emulating=20
+  non-volatile battery-protected RAM expansions). </LI></UL>
+<P>After the header, a pure binary image of each chunk is stored in DCK =
+file.=20
+That's all if only one bank is stored in DCK file. Else, after the =
+memory image,=20
+a new 9-byte header for next bank follows, and so on.</P><A =
+name=3DMDR></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.MDR (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_unix.html#XZX2">xzx =
+v2</A>,=20
+      others) [from Z80 documentation]</TH></TR></TBODY></TABLE>
+<P>The following information is adapted from Carlo's documentation. It =
+can also=20
+be found in the 'Spectrum Microdrive Book', by Ian Logan (co-writer of =
+the=20
+excellent 'Complete Spectrum ROM Disassembly').</P>
+<P>A cartridge file contains 254 'sectors' of 543 bytes each, and a =
+final byte=20
+flag which is non-zero is the cartridge is write protected, so the total =
+length=20
+is 137923 bytes. On the cartridge tape, after a GAP of some time the =
+Interface I=20
+writes 10 zeros and 2 FF bytes (the preamble), and then a fifteen byte=20
+header-block-with-checksum. After another GAP, it writes a preamble =
+again, with=20
+a 15-byte record-descriptor-with-checksum (which has a structure very =
+much like=20
+the header block), immediately followed by the data block of 512 bytes, =
+and a=20
+final checksum of those 512 bytes. The preamble is used by the Interface =
+I=20
+hardware to synchronise, and is not explicitly used by the software. The =
+
+preamble is not saved to the microdrive file:</P><PRE>    Offset Length =
+Name    Contents
+    ------------------------------
+      0      1   HDFLAG   Value 1, to indicate header block
+      1      1   HDNUMB   sector number (values 254 down to 1)
+      2      2            not used
+      4     10   HDNAME   microdrive cartridge name (blank padded)
+     14      1   HDCHK    header checksum (of first 14 bytes)
+
+     15      1   RECFLG   - bit 0: always 0 to indicate record block
+                          - bit 1: set for the EOF block
+                          - bit 2: reset for a PRINT file
+                          - bits 3-7: not used (value 0)
+     16      1   RECNUM   data block sequence number (value starts at 0)
+     17      2   RECLEN   data block length (&lt;=3D512, LSB first)
+     19     10   RECNAM   filename (blank padded)
+     29      1   DESCHK   record descriptor checksum (of previous 14 =
+bytes)
+     30    512            data block
+    542      1   DCHK     data block checksum (of all 512 bytes of data
+                           block, even when not all bytes are used)
+    ---------
+    254 times
+</PRE>
+<P>(Actually, this information is 'transparent' to the emulator. All it =
+does is=20
+store 2 times 254 blocks in the .MDR file as it is OUTed, alternatingly =
+of=20
+length 15 and 528 bytes. The emulator does check checksums, see below; =
+the other=20
+fields are dealt with by the emulated Interface I software.)</P>
+<P>A used record block is either an EOF block (bit 1 of RECFLG is 1) or =
+contains=20
+512 bytes of data (RECLEN=3D512, i.e. bit 1 of MSB is 1). An empty =
+record block=20
+has a zero in bit 1 of RECFLG and also RECLEN=3D0. An unusable block (as =
+
+determined by the FORMAT command) is an EOF block with RECLEN=3D0.</P>
+<P>The three checksums are calculated by adding all the bytes together =
+modulo=20
+255; this will never produce a checksum of 255. Possibly, this is the =
+value that=20
+is read by the Interface I if there's no or bad data on the tape.</P>
+<P>In normal operation, all first-fifteen-byte blocks of each header or =
+record=20
+block will have the right checksum. If the checksum is not right, the =
+block will=20
+be treated as a GAP. For instance, if you type OUT 239,0 on a normal =
+Spectrum=20
+with interface I, the microdrive motor starts running and the cartridge =
+will be=20
+erased completely in 7 seconds. CAT 1 will respond with 'microdrive not =
+ready'.=20
+Try it on the emulator...</P>
+<P><A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#WARAJEVO">Waraje=
+vo</A>=20
+uses basically the same format, but ignores the `read-only' final byte =
+(it=20
+obtains this information from the file attributes), and also the files =
+do not=20
+have to contain all 254 sectors.</P><A name=3DNET></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.NET (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#WARAJEVO">Waraje=
+vo</A>)=20
+    </TH></TR></TBODY></TABLE>
+<P>.NET files are used by Warajevo to emulate the Interface I Network, =
+which=20
+allowed up to 8 different Spectrums to talk to each other.</P>
+<P>The format of the network files is very simple. They have 260 bytes =
+(or more,=20
+but excess bytes will not be used), with following structure:</P><PRE>   =
+Byte    Length  Description
+
+     0       2     Package ID (used for fast checking whether content of =
+the
+                   Net file is changed)
+     2       2     Reserved; not yet used         =20
+     4     256     Content of the package
+</PRE><A name=3DPAL></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.PAL (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#WARAJEVO">Waraje=
+vo</A>)=20
+    </TH></TR></TBODY></TABLE>
+<P>The WARAJEVO.PAL file is used by Warajevo to set its colour palette. =
+They=20
+have a very simple 48-byte format: the first three bytes correspond to =
+R, G and=20
+B value for color 0, next three bytes correspond to RGB for color 1, =
+etc; the=20
+first 24 bytes are related to BRIGHT 0 colors, and next 24 bytes are =
+related to=20
+BRIGHT 1. All values must be in the range 0-63.</P><A name=3DPOK></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.POK (<A href=3D"http://www.void.demon.nl/sgd.html">Spectrum =
+Games=20
+      Database</A>, <A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_psio.html#SINCLAIRSPECTRU=
+MEMULATOR">Sinclair=20
+      Spectrum Emulator</A>) </TH></TR></TBODY></TABLE>
+<P>[From <A href=3D"mailto:mheide@gns.getronics.nl.no.junk.mail">Martijn =
+van der=20
+Heide</A>]</P>
+<P>The .POK file format is a proprietary format designed for use with =
+SGD (from=20
+version 1.20) and was originally used to POKE snapshots prior to =
+launching an=20
+emulator to play the specific game. This mechanism works on snapshots =
+only.</P>
+<P>Each trainer contains one or more POKEs (sometimes a game check needs =
+more=20
+than one poke to acquire a result). All trainers for a game are written =
+after=20
+each other. The first character in a line of the file determines the =
+content of=20
+the line.</P>
+<P>'N' means: this is the Next trainer,<BR>'Y' means: this is the last =
+line of=20
+the file (the rest of the file is ignored).</P>
+<P>After the 'N' follows the name/description of this specific trainer. =
+This=20
+string may be up to 30 characters. There is no space between the 'N' and =
+the=20
+string.</P>
+<P>The following lines, up to the next 'N' or 'Z' hold the POKEs to be =
+applied=20
+for this specific trainer. Again, the first character determines the=20
+content.</P>
+<P>'M' means: this is not the last POKE (More)<BR>'Z' means: this is the =
+last=20
+POKE</P>
+<P>The POKE line has the format:</P><PRE>   lbbb aaaaa vvv ooo
+</PRE>
+<P>Where l determines the content, bbb is the bank, aaaaa is the address =
+to be=20
+poked with value vvv and ooo is the original value of aaaaa. All values =
+are=20
+decimal, and separated by one or more spaces, apart from between l and =
+bbb;=20
+however, the bank value is never larger than 8, so you will always see 2 =
+spaces=20
+in front of the bank.</P>
+<P>The field bank field is built from</P><PRE>bit 0-2 : bank value
+      3 : ignore bank (1=3Dyes, always set for 48K games)</PRE>
+<P>If the field &lt;value&gt; is in range 0-255, this is the value to be =
+POKEd.=20
+If it is 256, a requester should pop up where the user can enter a =
+value.</P>
+<P>The 'original' field holds the original value at the address. It is =
+used to=20
+remove a POKE. Normally, when applying a POKE, the original value can be =
+read=20
+from the address. Sometimes however, games as found on the internet are =
+already=20
+POKEd, so the original value can not be read. If this field is filled in =
+(non-0)=20
+you still have the possibility to remove the trainer. (This format =
+cannot handle=20
+the possibility that the original value was 0).</P><A name=3DSCR></A>
+<TABLE width=3D"100%" bgColor=3D#ffffbb>
+  <TBODY>
+  <TR>
+    <TH>.SCR (<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_dos.html#Z80">Z80</A>, =
+<A=20
+      =
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/emu_win.html#WSPECEM">WSpecEm=
+</A>,=20
+      others) </TH></TR></TBODY></TABLE>
+<P>These files are just Spectrum screen dumps, and are simply the 6912 =
+bytes of=20
+pixel and attribute data found at address 16384, stored on disk in =
+exactly the=20
+same way as they are stored in memory.</P>
+<P>To elaborate; the Spectrum screen is split into four areas; top =
+third, mid=20
+third, bottom third and attributes (colours). The thirds each consist of =
+2048=20
+bytes and the attribute area is 768 bytes (32 characters wide x 24 =
+lines). So=20
+the first 6144 bytes are the actual pixel data and the remainder decides =
+what=20
+two colours are used in each 8x8 square.</P>
+<P>Each third of the screen is laid out unusually; the first 32 bytes =
+are the=20
+pixels for the top row of the first character line, then the next 32 =
+bytes are=20
+the pixels for the top row of the second character line and so on until =
+you=20
+reach the ninth load of 32 bytes, which is the second row of the first =
+character=20
+line. Next 32 bytes is the second row of the second character line, and =
+so on.=20
+It's hard to explain, so the best thing to do is see for yourself; write =
+a=20
+program to POKE data to 16384 up and see how the bytes fill in on the=20
+screen.</P>
+<P align=3Dcenter><IMG alt=3D-----=20
+src=3D"http://www.nvg.ntnu.no/sinclair/faq/zxline.png" width=3D540 =
+height=3D8></P>
+<P align=3Dcenter><FONT size=3D-1>This FAQ is maintained by <A=20
+href=3D"mailto:pak@ast.cam.ac.uk">Philip Kendall</A>; distribution is =
+permitted=20
+only under the conditions specified in the <A=20
+href=3D"http://www.nvg.ntnu.no/sinclair/faq/index.html#COPYRIGHT">copyrig=
+ht=20
+notice</A>.<BR>Primary site for this FAQ: <A=20
+href=3D"http://www.ast.cam.ac.uk/~pak/cssfaq/index.html">http://www.ast.c=
+am.ac.uk/~pak/cssfaq/index.html</A>.</FONT>=20
+</P></BODY></HTML>
+
+------=_NextPart_000_0000_01CDD35A.97E75510
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://www.nvg.ntnu.no/sinclair/faq/zxline.png
+
+iVBORw0KGgoAAAANSUhEUgAAAhwAAAAIBAMAAABACDvrAAAABGdBTUEAALGPC/xhBQAAABhQTFRF
+//////8A/wAAAP//AP8A7gAAAO4AAAAAPpRA+wAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1F
+B9AFEw85MHenO6UAAABuSURBVHicYygfsUAJCASBwAUIjIEAJMYw0I4aMFAEDA1FYGiIAEPDGRga
+5iDBkRsc2BLHyA0OUOIIBCUONxeXZFjiGLnBAUscKS5uiMQxYoMDljjEkEuOkRscSkpB0MSBVHKM
+2OBAThyIkqO8HAA+B8dG6mIczQAAAABJRU5ErkJggg==
+
+------=_NextPart_000_0000_01CDD35A.97E75510--
