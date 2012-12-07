@@ -1,8 +1,11 @@
 MODULE MakeZX; (** portable *)
 
 IMPORT
-  Out := Console, Cmd := CmdLine;
+  Out := Console, Cmd := CmdLine,
+  (* Supported format: TAP *)
+  Tap := TapeTAP;
 
+(*
 (* ========================================================================== *)
 (*                                 TAP format                                 *)
 (* -------------------------------------------------------------------------- *)
@@ -149,9 +152,19 @@ BEGIN
     Out.WriteStr("["); Out.WriteInt(i); Out.WriteStr("] = ");
     Cmd.GetParam(i, param); Out.WriteStr(param); Out.Ln;
   END;
-END Run;
+END Run; *)
+
+PROCEDURE CreateTape;
+VAR
+  tap: Tap.TapeFile; data: ARRAY 4 OF BYTE;
+BEGIN
+  data[0] := 3EH; data[1] := 41H; data[2] := 0D3H; data[3] := 0C9H;
+  tap.ReCreate("mytape.tap");
+  tap.SaveCode("mycode", 26000, 4, data);
+  tap.Finalize;
+END CreateTape;
 
 BEGIN
-  Run;
+  CreateTape;
 END MakeZX.
 
