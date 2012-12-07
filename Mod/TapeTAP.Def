@@ -1,0 +1,11 @@
+DEFINITION TapeTAP;
+
+TYPE
+  TapeFile = RECORD END;
+
+PROCEDURE (VAR tap: TapeFile) ReCreate (tapeName: ARRAY OF CHAR);
+PROCEDURE (VAR tap: TapeFile) SaveCode (
+  name: ARRAY OF CHAR; startAddr, dataLength: INTEGER; VAR data: ARRAY OF BYTE);
+PROCEDURE (VAR tap: TapeFile) Finalize;
+
+END TapeTAP.
