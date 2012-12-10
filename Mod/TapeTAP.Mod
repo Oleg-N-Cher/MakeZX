@@ -85,7 +85,7 @@ Ofs: Field type: Len: Description:| Additional information:                    |
  0|     BYTE     | 1|  flag byte  |Always 0 - indicating a ROM loading header  |
  1|     BYTE     | 1|  data type  |Always 3 - byte indicating a byte header    |
  2|ARR 10 OF CHAR|10|  file name  |Loading CODE name (filled with spaces " ")  |
-12|     WORD     | 2|[data length]|Len of the following data (after the header)|
+12|     WORD     | 2|[data length]|Len of the CODE data (after the header)     |
   |              |  |             | in case of a SCREEN$ header = 6912         |
 14|     WORD     | 2|start address| in case of a SCREEN$ header = 16384        |
 16|     WORD     | 2|   unused    | = 32768                                    |
@@ -93,13 +93,13 @@ Ofs: Field type: Len: Description:| Additional information:                    |
 ==+==============+==+=============+============================================+
 
   TapeHeader = RECORD (* TAP header format (19 bytes): *)
-    (* 1*)loadHeader: BYTE;       (* Always 0 - indicating a ROM loading header. *)
-    (* 2*)byteHeader: BYTE;       (* Always 3 - byte indicating a byte header.   *)
-    (* 3*)name: ARRAY 10 OF CHAR; (* Name of the program. Filled with spaces.    *)
-    (*13*)dataLength: WORD;
-    (*15*)startAddr : WORD;
-    (*17*)unused    : WORD;
-    (*19*)checksum  : BYTE;
+    (* 1*)loadHeader: BYTE;       (* = 0 - indicates a ROM loading header.    *)
+    (* 2*)byteHeader: BYTE;       (* = 3 - indicates a byte header.           *)
+    (* 3*)name: ARRAY 10 OF CHAR; (* Name of the program. Filled with spaces. *)
+    (*13*)dataLength: WORD;       (* Len of the CODE data (after the header). *)
+    (*15*)startAddr : WORD;       (* Start address of the followed CODE data. *)
+    (*17*)unused    : WORD;       (* = 32768 - unused.                        *)
+    (*19*)checksum  : BYTE;       (* Simply all bytes (incl.flag byte) XORed. *)
    END;
 *)
 VAR
