@@ -8,8 +8,8 @@
 
 
 
-import void Console_Ln (void);
 import void Console_WriteInt (LONGINT n);
+import void Console_WriteLn (void);
 import void Console_WriteStr (CHAR *str, LONGINT str__len);
 import void *Console__init(void);
 

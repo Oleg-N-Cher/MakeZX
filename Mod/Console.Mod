@@ -12,6 +12,7 @@ IMPORT SYSTEM;
 PROCEDURE -includestdio()	"#include <stdio.h>";
 
 PROCEDURE -writeInt (n: LONGINT)	'printf("%ld", n)';
+PROCEDURE -writeLInt (n: LONGINT)	'printf("%lld", n)';
 (*
   "%d" and "%i" are the same when used for output, e.g. with printf,
   but different when used as input specifier e.g. with scanf,
@@ -25,13 +26,16 @@ PROCEDURE -writeStr (str: ARRAY [1] OF CHAR)	'printf("%s", str)';
 
 PROCEDURE -writeLn	'printf("\n")';
 
-PROCEDURE WriteInt* (n: LONGINT); (* Write signed long integer number into console. *)
-BEGIN writeInt(n) END WriteInt;
+PROCEDURE WriteInt* (n: LONGINT); (** Write signed long integer number into console. *)
+BEGIN
+  IF SIZE(LONGINT) = 4 THEN writeInt(n) END;
+  IF SIZE(LONGINT) = 8 THEN writeLInt(n) END;
+END WriteInt;
 
 PROCEDURE WriteStr* (str: ARRAY [1] OF CHAR); (** Write ANSI string into console. *)
 BEGIN writeStr(str) END WriteStr;
 
-PROCEDURE Ln* ; (** Write from next line (CR). *)
-BEGIN writeLn END Ln;
+PROCEDURE WriteLn* ; (** Write from next line (CR). *)
+BEGIN writeLn END WriteLn;
 
 END Console.
