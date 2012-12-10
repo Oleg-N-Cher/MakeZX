@@ -12,6 +12,7 @@ uses double # as concatenation operator
 */
 
 #include <alloca.h>
+#include "SYSTEM_Cfg.h"
 
 extern void *memcpy(void *dest, const void *src, long n);
 extern void *malloc(long size);
@@ -54,7 +55,11 @@ extern SYSTEM_PTR SYSTEM_NEWARR(long*, long, int, int, int, ...);
 extern SYSTEM_PTR SYSTEM_NEWARR();
 #endif
 extern SYSTEM_PTR SYSTEM_REGMOD();
-extern void SYSTEM_INCREF();
+#ifdef SYSTEM_Cfg_IncRef
+  extern void SYSTEM_INCREF();
+#else
+  #define SYSTEM_INCREF(proc) proc
+#endif
 extern void SYSTEM_REGCMD();
 extern void SYSTEM_REGTYP();
 extern void SYSTEM_REGFIN();
@@ -68,13 +73,25 @@ extern void SYSTEM_ENUMR();
 
 /* module registry */
 #define __DEFMOD	static void *m; if(m!=0)return m
-#define __REGMOD(name, enum)	if(m==0)m=SYSTEM_REGMOD((CHAR*)name,enum); else return m
+#ifdef SYSTEM_Cfg_RegisterModules
+  #define __REGMOD(name, enum)	if(m==0)m=SYSTEM_REGMOD((CHAR*)name,enum); else return m
+#else
+  #define __REGMOD(name, enum)
+#endif
 #define __ENDMOD	return m
 #define __INIT(argc, argv)	static void *m; SYSTEM_INIT(argc, (long)&argv);
-#define __REGMAIN(name, enum)	m=SYSTEM_REGMOD(name,enum)
+#ifdef SYSTEM_Cfg_RegisterMain
+  #define __REGMAIN(name, enum)	m=SYSTEM_REGMOD(name,enum)
+#else
+  #define __REGMAIN(name, enum)
+#endif
 #define __FINI	SYSTEM_FINI(); return 0
 #define __IMPORT(name)	SYSTEM_INCREF(name##__init())
-#define __REGCMD(name, cmd)	SYSTEM_REGCMD(m, name, cmd)
+#ifdef SYSTEM_Cfg_RegisterCommands
+  #define __REGCMD(name, cmd)	SYSTEM_REGCMD(m, name, cmd)
+#else
+  #define __REGCMD(name, cmd)
+#endif
 
 /* SYSTEM ops */
 #define __SYSNEW(p, len)	p=SYSTEM_NEWBLK((long)(len))
@@ -165,7 +182,8 @@ static int __STRCMP(x, y)
 #define __ENUMP(adr, n, P)	SYSTEM_ENUMP(adr, (long)(n), P)
 #define __ENUMR(adr, typ, size, n, P)	SYSTEM_ENUMR(adr, typ, (long)(size), (long)(n), P)
 
-#define __INITYP(t, t0, level) \
+#ifdef SYSTEM_Cfg_InitTypes
+  #define __INITYP(t, t0, level) \
 	t##__typ= &t##__desc.blksz; \
 	memcpy(t##__desc.base, t0##__typ - __BASEOFF, level*sizeof(long)); \
 	t##__desc.base[level]=t##__typ; \
@@ -174,10 +192,18 @@ static int __STRCMP(x, y)
 	t##__desc.blksz=(t##__desc.blksz+5*sizeof(long)-1)/(4*sizeof(long))*(4*sizeof(long)); \
 	SYSTEM_REGTYP(m, (long)&t##__desc.next); \
 	SYSTEM_INHERIT(t##__typ, t0##__typ)
+#else
+  #define __INITYP(t, t0, level)
+#endif
 
 /* Oberon-2 type bound procedures support */
-#define __INITBP(t, proc, num)	*(t##__typ-(__TPROC0OFF+num))=(long)proc
-#define __SEND(typ, num, funtyp, parlist)	((funtyp)(*(typ-(__TPROC0OFF+num))))parlist
+#ifdef SYSTEM_Cfg_TypeBoundProcDynCalls
+  #define __INITBP(t, proc, num)	*(t##__typ-(__TPROC0OFF+num))=(long)proc
+  #define __SEND(typ, procname, num, funtyp, parlist)	((funtyp)(*(typ-(__TPROC0OFF+num))))parlist
+#else
+  #define __INITBP(t, proc, num)
+  #define __SEND(typ, procname, num, funtyp, parlist) procname parlist
+#endif
 
 /* runtime system variables */
 extern LONGINT SYSTEM_argc;

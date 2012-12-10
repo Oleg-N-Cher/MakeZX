@@ -16,12 +16,18 @@ void SYSTEM_INIT (int argc, long argvadr)
   //SYSTEM__init();
 }
 
+void SYSTEM_HALT (int n)
+{
+	exit(n);
+}
+
 void SYSTEM_FINALL (void)
 {
-  exit(0);
+  //exit(0);
 }
 
 void SYSTEM_FINI (void)
 {
-  SYSTEM_FINALL();
+  //SYSTEM_FINALL();
 }
+
