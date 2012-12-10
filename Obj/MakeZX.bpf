@@ -1,10 +1,17 @@
+USE("alloca.h", File);
 USE("SYSTEM.h", File);
+USE("Platform.h", File);
 USE("CmdLine.h", File);
 USE("Console.h", File);
+USE("Files.h", File);
+USE("TapeTAP.h", File);
 USEUNIT("SYSTEM.c");
 USEUNIT("CmdLine.c");
 USEUNIT("Console.c");
+USEUNIT("Files.c");
 USEUNIT("MakeZX.c");
+USEUNIT("TapeTAP.c");
+
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 

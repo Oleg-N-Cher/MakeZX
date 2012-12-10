@@ -1,7 +1,7 @@
 MODULE MakeZX; (** portable *)
 
 IMPORT
-  Out := Console, Cmd := CmdLine,
+  Platform, IO := Console, Cmd := CmdLine,
   (* Supported format: TAP *)
   Tap := TapeTAP;
 
@@ -154,17 +154,56 @@ BEGIN
   END;
 END Run; *)
 
+(*
+PROCEDURE CreateTape; (** For testing - must give exact tape image: *)
+
+            |------ Spectrum-generated data -------|       |---------|
+
+       13 00 00 03 52 4f 4d 7x20 02 00 00 00 00 80 f1 04 00 ff f3 af a3
+
+       ^^^^^...... first block is 19 bytes (17 bytes+flag+checksum)
+             ^^... flag byte (A reg, 00 for headers, ff for data blocks)
+                ^^ first byte of header, indicating a code block
+
+       file name ..^^^^^^^^^^^^^
+       header info ..............^^^^^^^^^^^^^^^^^
+       checksum of header .........................^^
+       length of second block ........................^^^^^
+       flag byte ............................................^^
+       first two bytes of rom .................................^^^^^
+       checksum (checkbittoggle would be a better name!).............^^
+
+VAR
+  tap: Tap.TapeFile; data: ARRAY 2 OF Platform.BYTE;
+BEGIN
+  data[0] := CHR(243); data[1] := CHR(175);
+  tap.ReCreate("mytape.tap");
+  tap.SaveCode("ROM", 0, 2, data);
+END ...
+*)
+
 PROCEDURE CreateTape;
 VAR
-  tap: Tap.TapeFile; data: ARRAY 4 OF BYTE;
+  tap: Tap.TapeFile; data: ARRAY 4 OF Platform.BYTE;
 BEGIN
-  data[0] := 3EH; data[1] := 41H; data[2] := 0D3H; data[3] := 0C9H;
+  data[0] := 3EX; data[1] := 41X; (* LD A,"A" *)
+  data[2] := 0D7X; (* RST #10 *)
+  data[3] := 0C9X; (* RET *)
   tap.ReCreate("mytape.tap");
-  tap.SaveCode("mycode", 26000, 4, data);
-  tap.Finalize;
+  IF tap.error THEN
+    IO.WriteStr("Tape creating error"); IO.WriteLn;
+  ELSE
+    IO.WriteStr("Tape created OK"); IO.WriteLn;
+    tap.SaveCode("mycode", 26000, 4, data);
+    IF tap.error THEN
+      IO.WriteStr("Cannot write to tape file"); IO.WriteLn;
+    END;
+    tap.Finalize;
+  END;
 END CreateTape;
 
 BEGIN
   CreateTape;
 END MakeZX.
 
+(* Принцип обработки ошибок: если что-то идёт не так - ругайся. *)

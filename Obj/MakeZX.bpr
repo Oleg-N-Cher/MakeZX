@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="MakeZX.exe"/>
-    <OBJFILES value="SYSTEM.obj CmdLine.obj Console.obj MakeZX.obj"/>
+    <OBJFILES value="SYSTEM.obj CmdLine.obj Console.obj Files.obj MakeZX.obj TapeTAP.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
@@ -33,7 +33,7 @@
       -tWM- -c"/>
     <PFLAGS value="-$YD -$W -$R -$Q -$O- -v -JPHNE -M"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zd"/>
+    <AFLAGS value="/mx /w2 /zi"/>
     <LFLAGS value="-D&quot;&quot; -ap -Tpe -x -Gn -v"/>
   </OPTIONS>
   <LINKER>
