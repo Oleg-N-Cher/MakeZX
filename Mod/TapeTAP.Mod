@@ -3,20 +3,24 @@
 (* -------------------------------------------------------------------------- *)
 
 MODULE TapeTAP; (** portable *)
-(* Дизайн модуля диктуется трудностями в Linux'е с вычислением размера файла. *)
+(* Дизайн модуля диктуется трудностями в Linux'е с вычислением размера файла  *)
+(*  до того момента как он будет полностью прочитан (файл может быть потоком).*)
 (* Ещё я сознательно избегаю использовать динамическую память и сборку мусора.*)
 
 IMPORT
-  Platform, Files;
+  SYSTEM, Platform, Files;
 
 TYPE
   (* Standard platform types: *)
   BYTE = Platform.BYTE;
-
+  STRING = Platform.STRING;
+  WORD = INTEGER;
+  
   (* TAP format: *)
   TapeFile* = RECORD
-    file: Files.File;
-    (*checksum: SET;*)
+    file: Files.FileToWrite;
+    error-: BOOLEAN;
+    checksum: SET; (* BITS *)
   END;
 
 (*
@@ -39,35 +43,40 @@ PROCEDURE (VAR tap: Tape) Close* ;
   END ... *)
 
 (*----------------------------------------------------------------------------*)
-PROCEDURE (VAR tap: TapeFile) ReCreate* (tapeName: ARRAY OF CHAR);
+PROCEDURE (VAR tap: TapeFile) ReCreate* (tapeName: STRING);
 BEGIN
   tap.file.OpenToWrite(tapeName);
-  IF ~tap.file.isNoError THEN Assert("Cannot create TAP file") END;
+  tap.error := tap.file.error; (* Выносим обработку ошибок на уровень выше. *)
 END ReCreate;
 
 (*----------------------------------------------------------------------------*)
 PROCEDURE (VAR tap: TapeFile) WriteByte (b: BYTE);
 BEGIN
-  ASSERT(b <= 0FFH);
-  tap.file.WriteByte(b);
-  IF tap.file.status # OK THEN Assert("Cannot write to tape file"); Assert(tap.name); END;
-  tap.checksum := tap.checksum * SET(b); (* ? *)
+  IF ~tap.error THEN tap.file.WriteByte(b); tap.error := tap.file.error END;
+(*
+  IF tap.file.status # OK THEN Assert("Cannot write to tape file"); Assert(tap.name); END; *)
+  tap.checksum := tap.checksum / SYSTEM.VAL(SET, b); (* checksum := checksum XOR b *)
 END WriteByte;
 
 PROCEDURE (VAR tap: TapeFile) WriteWord (w: WORD);
 BEGIN
-  ASSERT(b <= 0FFFFH);
-  tap.file.WriteByte(w);
+  IF (w >= 0) & (w <= 0FFFFH) THEN (* w IN {0..65535} *)
+    IF ~tap.error THEN tap.WriteByte(SHORT(w)); tap.error := tap.file.error END;
+    IF ~tap.error THEN tap.WriteByte(SHORT(w DIV 256)); tap.error := tap.file.error END;
+  ELSE (* ~(w IN {0..65535}) *)
+    tap.error := TRUE; (* Причину укажем в tap.state *)
+  END; (*
   IF tap.file.status # OK THEN Assert("Cannot write to tape file"); Assert(tap.name); END;
-  tap.file.WriteByte(w DIV 256);
+   tap.error := tap.file.error; *)
 END WriteWord;
 
 PROCEDURE (VAR tap: TapeFile) WriteCheckSum;
 BEGIN
-  tap.file.WriteByte(ORD(tap.checksum));
+  tap.file.WriteByte(SHORT(Platform.ORD(tap.checksum)));
 END WriteCheckSum;
 
-PROCEDURE (VAR tap: TapeFile) WriteCodeHeader; (*
+PROCEDURE (VAR tap: TapeFile) WriteCodeHeader (name: STRING; dataStartAddr, dataLength: INTEGER);
+(*
 ================================================================================
 |     CODE header or SCREEN$ header - for storing machine code or screens.     |
 +---------------------------------+--------------------------------------------+
@@ -82,7 +91,7 @@ Ofs: Field type: Len: Description:| Additional information:                    |
 16|     WORD     | 2|   unused    | = 32768                                    |
 17|     BYTE     | 1|checksum byte|Simply all bytes (including flag byte) XORed|
 ==+==============+==+=============+============================================+
-*)
+
   TapeHeader = RECORD (* TAP header format (19 bytes): *)
     (* 1*)loadHeader: BYTE;       (* Always 0 - indicating a ROM loading header. *)
     (* 2*)byteHeader: BYTE;       (* Always 3 - byte indicating a byte header.   *)
@@ -92,31 +101,34 @@ Ofs: Field type: Len: Description:| Additional information:                    |
     (*17*)unused    : WORD;
     (*19*)checksum  : BYTE;
    END;
-
+*)
+VAR
+  i, nameIdx: INTEGER;
 BEGIN
   tap.WriteWord(19); (* Standard tape header size = 19 bytes.     *)
-  tap.checksum := 0;
+  tap.checksum := {};
   tap.WriteByte(0);  (* 0 indicates ROM header; 0FFH = ROM data.  *)
   tap.WriteByte(3);  (* Always 3 - byte indicating a byte header. *)
   (* Write the CODE name (10 bytes, if less, filled with spaces). *)
   nameIdx := 0;
   FOR i := 0 TO 9 DO (* Cut CODE name, if its len > 10. *)
-    IF (nameIdx <= LEN(tap.name)) & (tap.name[nameIdx] # 0X) THEN
-      tap.WriteByte(tap.name[nameIdx]);
+    IF (nameIdx <= LEN(name)) & (name[nameIdx] # 0X) THEN
+      tap.WriteByte(name[nameIdx]);
       INC(nameIdx);
     ELSE
       tap.WriteByte(" ");
     END;
   END;
   (* Write CODE data length (after the header). SCREEN$ length = 6912. *)
-  tap.WriteWord(tap.dataLength);
+  tap.WriteWord(dataLength);
   (* Write CODE start address. SCREEN$ header start address = 16384.   *)
-  tap.WriteWord(tap.dataStartAddr);
+  tap.WriteWord(dataStartAddr);
   tap.WriteWord(32768); (* Always = 32768. *)
   tap.WriteCheckSum;  (* Simply all bytes (including flag byte) XORed. *)
 END WriteCodeHeader;
 
-PROCEDURE (VAR tap: TapeFile) WriteCodeBody; (*
+PROCEDURE (VAR tap: TapeFile) WriteCodeBody (dataLength: INTEGER; VAR data: ARRAY OF BYTE);
+(*
 ================================================================================
 |     Standard data blocks or custom data blocks - (2+[data length]) bytes     |
 +---------------------------------+--------------------------------------------+
@@ -127,16 +139,19 @@ Ofs: Field type: Len: Description:| Additional information:                    |
 1+[data len] BYTE| 1|checksum byte|Simply all bytes (including flag byte) XORed|
 ==+==============+==+=============+============================================+
 *)
+VAR
+  i: INTEGER;
 BEGIN
-  tap.WriteWord(1 + tap.dataLength + 1); (* flag + data length + checksum. *)
-  tap.checksum := 0;
-  tap.WriteByte(255);  (* 255 indicates a standard ROM loading data block. *)
-  FOR i := 0 TO tap.dataLength - 1 DO
-    tap.WriteByte(tap.data[i]);
+  tap.WriteWord(1 + dataLength + 1); (* flag + data length + checksum. *)
+  tap.checksum := {};
+  tap.WriteByte(0FFX);  (* 255 indicates a standard ROM loading data block. *)
+  FOR i := 0 TO dataLength - 1 DO
+    tap.WriteByte(data[i]);
   END;
   tap.WriteCheckSum;  (* Simply all bytes (including flag byte) XORed. *)
 END WriteCodeBody;
 
+(*
 PROCEDURE (VAR tap: TapeFile) SaveCode* (fileName: ARRAY OF CHAR; start: WORD);
 VAR
   bin: File;
@@ -155,6 +170,18 @@ BEGIN
     WriteCodeBody;
   END;
 END SaveCode;
+*)
+
+PROCEDURE (VAR tap: TapeFile) SaveCode* (
+  name: STRING; startAddr, dataLength: INTEGER; VAR data: ARRAY OF BYTE);
+BEGIN
+  tap.WriteCodeHeader(name, startAddr, dataLength);
+  tap.WriteCodeBody(dataLength, data);
+END SaveCode;
+
+PROCEDURE (VAR tap: TapeFile) Finalize* ;
+BEGIN
+  tap.file.Close;
+END Finalize;
 
 END TapeTAP.
-

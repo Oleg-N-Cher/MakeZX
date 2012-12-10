@@ -1,11 +1,16 @@
 DEFINITION TapeTAP;
 
-TYPE
-  TapeFile = RECORD END;
+IMPORT
+  Platform, Files;
 
-PROCEDURE (VAR tap: TapeFile) ReCreate (tapeName: ARRAY OF CHAR);
+TYPE
+  TapeFile = RECORD
+    error-: BOOLEAN;
+  END;
+
+PROCEDURE (VAR tap: TapeFile) ReCreate (tapeName: STRING);
 PROCEDURE (VAR tap: TapeFile) SaveCode (
-  name: ARRAY OF CHAR; startAddr, dataLength: INTEGER; VAR data: ARRAY OF BYTE);
+  name: STRING; startAddr, dataLength: INTEGER; VAR data: ARRAY OF BYTE);
 PROCEDURE (VAR tap: TapeFile) Finalize;
 
 END TapeTAP.
