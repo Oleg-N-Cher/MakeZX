@@ -75,6 +75,54 @@ BEGIN
   tap.file.WriteByte(SHORT(Platform.ORD(tap.checksum)));
 END WriteCheckSum;
 
+PROCEDURE (VAR tap: TapeFile) WriteBasicHeader (name: STRING; startLine, dataLength: INTEGER);
+(*
+================================================================================
+|BASIC program header or program autostart header - for storing BASIC programs.|
++---------------------------------+--------------------------------------------+
+Ofs: Field type: Len: Description:| Additional information:                    |
+--+--------------+--+-------------+--------------------------------------------+
+ 0|     BYTE     | 1|  flag byte  | Always 0: indicating a ROM loading header  |
+ 1|     BYTE     | 1|  data type  | Always 0: Byte indicating a program header |
+ 2|ARR 10 OF CHAR|10|  file name  |Loading BASIC name (filled with spaces " ") |
+12|     WORD     | 2|[data length]|Length of the BASIC program + variables len |
+14|     WORD     | 2|autostrt line| LINE parameter of SAVE command. 32768 means|
+  |              |  |             |no auto-loading; 0..9999 are valid line nums|
+16|     WORD     | 2|[program len]| length of BASIC program; remaining bytes   |
+  |              |  |             |[data len]-[program len]=offset of variables|
+18|     BYTE     | 1|checksum byte|Simply all bytes (including flag byte) XORed|
+==+==============+==+=============+============================================+
+*)
+VAR
+  i, nameIdx: INTEGER;
+BEGIN
+  tap.WriteWord(19); (* Standard tape header size = 19 bytes.     *)
+  tap.checksum := {};
+  tap.WriteByte(0);  (* 0 indicates ROM header; 0FFH = ROM data.  *)
+  tap.WriteByte(0);  (* Always 0: Byte indicates a BASIC header.  *)
+  (* Write the CODE name (10 bytes, if less, filled with spaces). *)
+  nameIdx := 0;
+  FOR i := 0 TO 9 DO (* Cut CODE name, if its len > 10. *)
+    IF (nameIdx <= LEN(name)) & (name[nameIdx] # 0X) THEN
+      tap.WriteByte(name[nameIdx]);
+      INC(nameIdx);
+    ELSE
+      tap.WriteByte(" ");
+    END;
+  END;
+  (* Write BASIC data length (after the header). *)
+  tap.WriteWord(dataLength);
+  (* BASIC autostart line. 32768 = no auto-loading; 0..9999 = valid line nums.*)
+  IF ((startLine >= 0) & (startLine <= 9999)) OR (startLine = 32768) THEN
+    tap.WriteWord(startLine);
+  ELSE
+    tap.error := TRUE; (* Incorrect autostart line number. *)
+  END;
+  tap.WriteWord(dataLength); (* Variables now are not supported. *)
+  tap.WriteCheckSum; (* Simply all bytes (including flag byte) XORed. *)
+END WriteBasicHeader;
+
+
 PROCEDURE (VAR tap: TapeFile) WriteCodeHeader (name: STRING; dataStartAddr, dataLength: INTEGER);
 (*
 ================================================================================
@@ -82,14 +130,14 @@ PROCEDURE (VAR tap: TapeFile) WriteCodeHeader (name: STRING; dataStartAddr, data
 +---------------------------------+--------------------------------------------+
 Ofs: Field type: Len: Description:| Additional information:                    |
 --+--------------+--+-------------+--------------------------------------------+
- 0|     BYTE     | 1|  flag byte  |Always 0 - indicating a ROM loading header  |
- 1|     BYTE     | 1|  data type  |Always 3 - byte indicating a byte header    |
- 2|ARR 10 OF CHAR|10|  file name  |Loading CODE name (filled with spaces " ")  |
-12|     WORD     | 2|[data length]|Len of the CODE data (after the header)     |
+ 0|     BYTE     | 1|  flag byte  | Always 0: indicating a ROM loading header  |
+ 1|     BYTE     | 1|  data type  | Always 3: Byte indicating a byte header    |
+ 2|ARR 10 OF CHAR|10|  file name  | Loading CODE name (filled with spaces " ") |
+12|     WORD     | 2|[data length]| Length of the CODE data (after the header) |
   |              |  |             | in case of a SCREEN$ header = 6912         |
 14|     WORD     | 2|start address| in case of a SCREEN$ header = 16384        |
 16|     WORD     | 2|   unused    | = 32768                                    |
-17|     BYTE     | 1|checksum byte|Simply all bytes (including flag byte) XORed|
+18|     BYTE     | 1|checksum byte|Simply all bytes (including flag byte) XORed|
 ==+==============+==+=============+============================================+
 
   TapeHeader = RECORD (* TAP header format (19 bytes): *)
@@ -108,7 +156,7 @@ BEGIN
   tap.WriteWord(19); (* Standard tape header size = 19 bytes.     *)
   tap.checksum := {};
   tap.WriteByte(0);  (* 0 indicates ROM header; 0FFH = ROM data.  *)
-  tap.WriteByte(3);  (* Always 3 - byte indicating a byte header. *)
+  tap.WriteByte(3);  (* Always 3. Byte indicating a byte header.  *)
   (* Write the CODE name (10 bytes, if less, filled with spaces). *)
   nameIdx := 0;
   FOR i := 0 TO 9 DO (* Cut CODE name, if its len > 10. *)
