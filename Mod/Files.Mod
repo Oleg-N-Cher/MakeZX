@@ -1,8 +1,8 @@
 MODULE Files; (** portable layer for LibC - file IO. *)
-(*
-    Description: provides a simple buffered file input/output library.
-*)
-(*
+(*******************************************************************************
+*      Description: provides a simple buffered file input/output library.      *
+********************************************************************************
+
   По замыслу при работе с файлами есть 3 уровня различной глубины:
 
   1. Все ошибки могут игнорироваться; ничего страшного не произойдёт,
@@ -21,8 +21,9 @@ IMPORT SYSTEM;
   Failed* = 3;*)
 
 TYPE
-  PtrFILE = INTEGER; (* Internal system type. *)
+  PtrFILE = INTEGER; (* Internal system type - pointer to FILE. *)
   PtrSTR = ARRAY [1] OF CHAR;
+  STRING = ARRAY [1] OF CHAR;
 
   File* = RECORD (** Binary file *)
     handle: PtrFILE;
@@ -35,13 +36,6 @@ TYPE
   FileToWrite* = RECORD (File) (** Binary file to write only. *)
   END;
 
-(*
-   OpenToRead - attempts to open a file, fname, for reading and
-                it returns this file.
-                The success of this operation can be checked by
-                calling IsNoError.
-*)
-
 PROCEDURE -includestdio()	"#include <stdio.h>";
 
 PROCEDURE -fopen (filename, mode: PtrSTR): PtrFILE "(int)fopen(filename, mode)";
@@ -50,8 +44,15 @@ PROCEDURE -fputc (c: INTEGER; file: PtrFILE): INTEGER "fputc(c, (FILE*)file)";
 PROCEDURE -feof (file: PtrFILE): INTEGER "feof((FILE*)file)"; (* IF # 0 THEN EOF. *)
 PROCEDURE -EOF(): INTEGER "EOF";
 PROCEDURE -fclose (file: PtrFILE): INTEGER "fclose((FILE*)file)";
+PROCEDURE -unlink (filename: PtrSTR): INTEGER "unlink(filename)"; (* IF = 0 THEN OK. *)
 
-PROCEDURE (VAR file: File) OpenToRead* (fname: ARRAY [1] OF CHAR);
+(*
+   OpenToRead - attempts to open a file, fname, for reading and
+                it returns this file.
+                The success of this operation can be checked by
+                calling IsNoError.
+*)
+PROCEDURE (VAR file: File) OpenToRead* (fname: STRING);
 BEGIN
   file.error := FALSE; (* Reset this flag once - at start of work with a file. *)
   (* file.state := Successful; *)
@@ -70,8 +71,7 @@ END OpenToRead;
                  The success of this operation can be checked by
                  calling IsNoError.
 *)
-
-PROCEDURE (VAR file: File) OpenToWrite* (fname: ARRAY [1] OF CHAR);
+PROCEDURE (VAR file: File) OpenToWrite* (fname: STRING);
 BEGIN
   file.error := FALSE; (* Reset this flag once - at start of work with a file. *)
   (* file.state := Successful; *)
@@ -84,7 +84,6 @@ END OpenToWrite;
            OpenToRead, OpenToWrite, OpenForRandom.
            It is correct to close a file which has an error status.
 *)
-
 PROCEDURE (VAR file: File) Close* ;
 BEGIN
   IF file.handle # 0 THEN (* This is file to close. *)
@@ -131,19 +130,26 @@ BEGIN
 END WriteByte;
 
 (*
-VAR
-  bin: Files.BinFile; i: INTEGER; ch: CHAR;
-BEGIN
-  bin.OpenRead("Filename.bin");
-    IF bin.err # Files.Ok THEN ... END;
-    bin.ReadInt(i); bin.Read(ch);
-  bin.Close;
-
-  bin.OpenWrite("Filename2.bin");
-    IF bin.err # Files.Ok THEN ... END;
-    bin.WriteInt(i); bin.Write(ch);
-  bin.Close;
-END;
+   DeleteFile - returns TRUE if a file named, fname is successfully deleted.
 *)
+PROCEDURE DeleteFile* (fname: STRING): BOOLEAN;
+BEGIN
+  RETURN unlink(fname) = 0
+END DeleteFile;
+
+(*
+   ExistsFile - returns TRUE if a file named, fname exists for reading.
+*)
+PROCEDURE ExistsFile* (fname: STRING): BOOLEAN;
+VAR
+  f: FileToRead;
+BEGIN
+  f.OpenToRead(fname); f.Close; RETURN ~f.error
+END ExistsFile;
 
 END Files.
+
+(* TODO:
+  implement ReadBytes, WriteBytes (fread/fwrite)
+  implement Rename (rename или fopen/fread/fwrite/fclose/unlink)
+*)

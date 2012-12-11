@@ -12,11 +12,14 @@ TYPE
   FileToWrite = RECORD (File) (* Binary file to write only. *)
   END;
 
-PROCEDURE (VAR file: File) OpenToRead (fname: ARRAY [1] OF CHAR);
-PROCEDURE (VAR file: File) OpenToWrite (fname: ARRAY [1] OF CHAR);
+PROCEDURE (VAR file: File) OpenToRead (fname: STRING);
+PROCEDURE (VAR file: File) OpenToWrite (fname: STRING);
 PROCEDURE (VAR file: File) Close;
 
 PROCEDURE (VAR fromfile: FileToRead) ReadByte (): SYSTEM.BYTE;
 PROCEDURE (VAR tofile: FileToWrite) WriteByte (byte: SYSTEM.BYTE);
+
+PROCEDURE DeleteFile (fname: STRING): BOOLEAN;
+PROCEDURE ExistsFile (fname: STRING): BOOLEAN;
 
 END Files.

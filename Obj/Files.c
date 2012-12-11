@@ -8,6 +8,9 @@ typedef
 	} Files_File;
 
 export void Files_File_Close (Files_File *file, LONGINT *file__typ);
+typedef
+	CHAR *Files_STRING;
+
 export void Files_File_OpenToRead (Files_File *file, LONGINT *file__typ, CHAR *fname, LONGINT fname__len);
 export void Files_File_OpenToWrite (Files_File *file, LONGINT *file__typ, CHAR *fname, LONGINT fname__len);
 #define __Files_File_Close(file, file__typ) __SEND(file__typ, Files_File_Close, 0, void(*)(Files_File*, LONGINT *), (file, file__typ))
@@ -41,6 +44,8 @@ export LONGINT *Files_File__typ;
 export LONGINT *Files_FileToRead__typ;
 export LONGINT *Files_FileToWrite__typ;
 
+export BOOLEAN Files_DeleteFile (CHAR *fname, LONGINT fname__len);
+export BOOLEAN Files_ExistsFile (CHAR *fname, LONGINT fname__len);
 
 #define Files_EOF()	EOF
 #define Files_fclose(file)	fclose((FILE*)file)
@@ -49,6 +54,7 @@ export LONGINT *Files_FileToWrite__typ;
 #define Files_fopen(filename, filename__len, mode, mode__len)	(int)fopen(filename, mode)
 #define Files_fputc(c, file)	fputc(c, (FILE*)file)
 #include <stdio.h>
+#define Files_unlink(filename, filename__len)	unlink(filename)
 
 void Files_File_OpenToRead (Files_File *file, LONGINT *file__typ, CHAR *fname, LONGINT fname__len)
 {
@@ -114,6 +120,19 @@ void Files_FileToWrite_WriteByte (Files_FileToWrite *tofile, LONGINT *tofile__ty
 			(*tofile).end = 1;
 		}
 	}
+}
+
+BOOLEAN Files_DeleteFile (CHAR *fname, LONGINT fname__len)
+{
+	return Files_unlink(fname, fname__len) == 0;
+}
+
+BOOLEAN Files_ExistsFile (CHAR *fname, LONGINT fname__len)
+{
+	Files_FileToRead f;
+	__Files_File_OpenToRead((void*)&f, Files_FileToRead__typ, fname, fname__len);
+	__Files_File_Close((void*)&f, Files_FileToRead__typ);
+	return !f.error;
 }
 
 __TDESC(Files_File, 4, 0) = {__TDFLDS("File", 8), {-4}};

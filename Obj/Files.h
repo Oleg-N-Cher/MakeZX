@@ -12,6 +12,9 @@ typedef
 	} Files_File;
 
 import void Files_File_Close (Files_File *file, LONGINT *file__typ);
+typedef
+	CHAR *Files_STRING;
+
 import void Files_File_OpenToRead (Files_File *file, LONGINT *file__typ, CHAR *fname, LONGINT fname__len);
 import void Files_File_OpenToWrite (Files_File *file, LONGINT *file__typ, CHAR *fname, LONGINT fname__len);
 #define __Files_File_Close(file, file__typ) __SEND(file__typ, Files_File_Close, 0, void(*)(Files_File*, LONGINT *), (file, file__typ))
@@ -42,6 +45,8 @@ import LONGINT *Files_File__typ;
 import LONGINT *Files_FileToRead__typ;
 import LONGINT *Files_FileToWrite__typ;
 
+import BOOLEAN Files_DeleteFile (CHAR *fname, LONGINT fname__len);
+import BOOLEAN Files_ExistsFile (CHAR *fname, LONGINT fname__len);
 import void *Files__init(void);
 
 
