@@ -9,7 +9,24 @@
 
 
 static void MakeZX_CreateTape (void);
+static void MakeZX_Title (void);
 
+
+static void MakeZX_Title (void)
+{
+	Console_WriteStr((CHAR*)"MakeZX v1.0: convert a binary file to ZX Spectrum format TAP", (LONGINT)61);
+	Console_WriteLn();
+	Console_WriteStr((CHAR*)"Copyright (C) 2012 Oleg N. Cher, VEDAsoft Oberon Club", (LONGINT)54);
+	Console_WriteLn();
+	Console_WriteStr((CHAR*)"http://sf.net/projects/makezx/   http://zx.oberon2.ru", (LONGINT)54);
+	Console_WriteLn();
+	Console_WriteLn();
+	Console_WriteLn();
+	Console_WriteStr((CHAR*)"Usage: makezx out_file.tap := in_file.bin[:Starting address]", (LONGINT)61);
+	Console_WriteLn();
+	Console_WriteStr((CHAR*)"Example: makezx mygame.tap := mygame.bin:32000", (LONGINT)47);
+	Console_WriteLn();
+}
 
 static void MakeZX_CreateTape (void)
 {
@@ -45,6 +62,7 @@ export main(int argc, char **argv)
 	__IMPORT(TapeTAP);
 	__REGMAIN("MakeZX", 0);
 /* BEGIN */
+	MakeZX_Title();
 	MakeZX_CreateTape();
 	__FINI;
 }

@@ -1,10 +1,3 @@
-(*
-DEFINITION CmdLine; (* portable layer for LibC - command line parameters handling *)
-  VAR ParamCount-: LONGINT;
-  PROCEDURE GetParam (n: LONGINT; VAR param: ARRAY OF CHAR);
-END CmdLine.
-*)
-
 MODULE CmdLine; (** portable layer for LibC - command line parameters handling *)
 
 IMPORT SYSTEM;
@@ -15,22 +8,22 @@ TYPE
   ArgVec = POINTER [1] TO ARRAY [1] 1024 OF ArgPtr;
 
 VAR
-  ParamCount-: LONGINT; (* argc - 1 *)
+  paramCount-: LONGINT; (* argc - 1 *)
 
-PROCEDURE -Argc(): INTEGER "SYSTEM_argc";
-PROCEDURE -Argv(): LONGINT "(long)SYSTEM_argv";
+PROCEDURE -argc(): INTEGER "SYSTEM_argc";
+PROCEDURE -argv(): LONGINT "(long)SYSTEM_argv";
 
-PROCEDURE GetParam* (n: LONGINT; VAR param: ARRAY OF CHAR);
+PROCEDURE GetParam* (n: INTEGER; VAR param: ARRAY OF CHAR);
 VAR
   av: ArgVec;
 BEGIN
-  IF n <= ParamCount THEN
-    av := SYSTEM.VAL(ArgVec, Argv()); COPY(av[n]^, param);
+  IF n <= paramCount THEN
+    av := SYSTEM.VAL(ArgVec, argv()); COPY(av[n]^, param);
   ELSE
     COPY("", param);
   END;
 END GetParam;
 
 BEGIN
-  ParamCount := Argc() - 1;
+  paramCount := argc() - 1;
 END CmdLine.
