@@ -139,7 +139,7 @@ BEGIN
   tap.checksum := {};
   tap.SaveByte(0);  (* Always 0: Indicates ROM header; 0FFH = ROM data. *)
   tap.SaveByte(0);  (* Always 0: Byte indicates a BASIC header.  *)
-  (* Write the CODE name (10 bytes, if less, filled with spaces). *)
+  (* Write a BASIC program's name (10 bytes, if less, filled with spaces). *)
   tap.SaveName(name);
   (* Write BASIC data length (after the header). *)
   tap.SaveWord(dataLength);
@@ -217,9 +217,7 @@ BEGIN
   tap.SaveWord(1 + dataLength + 1); (* flag + data length + checksum. *)
   tap.checksum := {};
   tap.SaveByte(0FFX);  (* 255 indicates a standard ROM loading data block. *)
-  FOR i := 0 TO dataLength - 1 DO
-    tap.SaveByte(data[i]);
-  END;
+  FOR i := 0 TO dataLength - 1 DO tap.SaveByte(data[i]) END;
   tap.SaveCheckSum;  (* Simply all bytes (including flag byte) XORed. *)
 END SaveDataBlock;
 
