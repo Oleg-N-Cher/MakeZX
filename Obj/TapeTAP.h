@@ -15,10 +15,12 @@ typedef
 
 import void TapeTAP_TapeFile_Finalize (TapeTAP_TapeFile *tap, LONGINT *tap__typ);
 import void TapeTAP_TapeFile_ReCreate (TapeTAP_TapeFile *tap, LONGINT *tap__typ, CHAR *tapeName, LONGINT tapeName__len);
+import void TapeTAP_TapeFile_SaveBasic (TapeTAP_TapeFile *tap, LONGINT *tap__typ, CHAR *name, LONGINT name__len, INTEGER startLine, INTEGER dataLength, SYSTEM_BYTE *data, LONGINT data__len);
 import void TapeTAP_TapeFile_SaveCode (TapeTAP_TapeFile *tap, LONGINT *tap__typ, CHAR *name, LONGINT name__len, INTEGER startAddr, INTEGER dataLength, SYSTEM_BYTE *data, LONGINT data__len);
 #define __TapeTAP_TapeFile_Finalize(tap, tap__typ) __SEND(tap__typ, TapeTAP_TapeFile_Finalize, 0, void(*)(TapeTAP_TapeFile*, LONGINT *), (tap, tap__typ))
 #define __TapeTAP_TapeFile_ReCreate(tap, tap__typ, tapeName, tapeName__len) __SEND(tap__typ, TapeTAP_TapeFile_ReCreate, 1, void(*)(TapeTAP_TapeFile*, LONGINT *, CHAR*, LONGINT ), (tap, tap__typ, tapeName, tapeName__len))
-#define __TapeTAP_TapeFile_SaveCode(tap, tap__typ, name, name__len, startAddr, dataLength, data, data__len) __SEND(tap__typ, TapeTAP_TapeFile_SaveCode, 2, void(*)(TapeTAP_TapeFile*, LONGINT *, CHAR*, LONGINT , INTEGER, INTEGER, SYSTEM_BYTE*, LONGINT ), (tap, tap__typ, name, name__len, startAddr, dataLength, data, data__len))
+#define __TapeTAP_TapeFile_SaveBasic(tap, tap__typ, name, name__len, startLine, dataLength, data, data__len) __SEND(tap__typ, TapeTAP_TapeFile_SaveBasic, 2, void(*)(TapeTAP_TapeFile*, LONGINT *, CHAR*, LONGINT , INTEGER, INTEGER, SYSTEM_BYTE*, LONGINT ), (tap, tap__typ, name, name__len, startLine, dataLength, data, data__len))
+#define __TapeTAP_TapeFile_SaveCode(tap, tap__typ, name, name__len, startAddr, dataLength, data, data__len) __SEND(tap__typ, TapeTAP_TapeFile_SaveCode, 6, void(*)(TapeTAP_TapeFile*, LONGINT *, CHAR*, LONGINT , INTEGER, INTEGER, SYSTEM_BYTE*, LONGINT ), (tap, tap__typ, name, name__len, startAddr, dataLength, data, data__len))
 
 
 
