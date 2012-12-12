@@ -36,6 +36,7 @@ TYPE
   FileToWrite* = RECORD (File) (** Binary file to write only. *)
   END;
 
+PROCEDURE -includeio()	"#include <io.h>";
 PROCEDURE -includestdio()	"#include <stdio.h>";
 
 PROCEDURE -fopen (filename, mode: PtrSTR): PtrFILE "(int)fopen(filename, mode)";

@@ -53,6 +53,7 @@ export BOOLEAN Files_ExistsFile (CHAR *fname, LONGINT fname__len);
 #define Files_fgetc(file)	fgetc((FILE*)file)
 #define Files_fopen(filename, filename__len, mode, mode__len)	(int)fopen(filename, mode)
 #define Files_fputc(c, file)	fputc(c, (FILE*)file)
+#include <io.h>
 #include <stdio.h>
 #define Files_unlink(filename, filename__len)	unlink(filename)
 
