@@ -92,12 +92,6 @@ BEGIN
 END SaveWord;
 
 (*----------------------------------------------------------------------------*)
-PROCEDURE (VAR tap: TapeFile) SaveCheckSum;
-BEGIN
-  tap.file.WriteByte(SHORT(Platform.ORD(tap.checksum)));
-END SaveCheckSum;
-
-(*----------------------------------------------------------------------------*)
 PROCEDURE (VAR tap: TapeFile) SaveName (name: STRING);
   (* Write a name (10 bytes, if less, filled with spaces). *)
 VAR
@@ -113,6 +107,12 @@ BEGIN
     END;
   END;
 END SaveName;
+
+(*----------------------------------------------------------------------------*)
+PROCEDURE (VAR tap: TapeFile) SaveCheckSum;
+BEGIN
+  tap.file.WriteByte(SHORT(Platform.ORD(tap.checksum)));
+END SaveCheckSum;
 
 (*----------------------------------------------------------------------------*)
 PROCEDURE (VAR tap: TapeFile) SaveBasicHeader (
