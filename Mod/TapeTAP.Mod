@@ -135,9 +135,9 @@ Ofs: Field type: Len: Description:| Additional information:                    |
 ==+==============+==+=============+============================================+
 *)
 BEGIN
-  tap.SaveWord(19); (* Standard tape header size = 19 bytes.     *)
+  tap.SaveWord(19); (* Standard tape header size = 19 bytes. *)
   tap.checksum := {};
-  tap.SaveByte(0);  (* Always 0: Indicates ROM header; 0FFH = ROM data. *)
+  tap.SaveByte(0);  (* Always 0: Byte indicates ROM header; 0FFH = ROM data. *)
   tap.SaveByte(0);  (* Always 0: Byte indicates a BASIC header.  *)
   (* Write a BASIC program's name (10 bytes, if less, filled with spaces). *)
   tap.SaveName(name);
@@ -168,7 +168,7 @@ Ofs: Field type: Len: Description:| Additional information:                    |
 12|     WORD     | 2|[data length]| Length of the CODE data (after the header) |
   |              |  |             | in case of a SCREEN$ header = 6912         |
 14|     WORD     | 2|start address| in case of a SCREEN$ header = 16384        |
-16|     WORD     | 2|   unused    | = 32768                                    |
+16|     WORD     | 2|   unused    | Always 32768                               |
 18|     BYTE     | 1|checksum byte|Simply all bytes (including flag byte) XORed|
 ==+==============+==+=============+============================================+
 
@@ -185,8 +185,8 @@ Ofs: Field type: Len: Description:| Additional information:                    |
 BEGIN
   tap.SaveWord(19); (* Standard tape header size = 19 bytes.     *)
   tap.checksum := {};
-  tap.SaveByte(0);  (* 0 indicates ROM header; 0FFH = ROM data.  *)
-  tap.SaveByte(3);  (* Always 3. Byte indicating a byte header.  *)
+  tap.SaveByte(0);  (* Always 0: Byte indicates ROM header; 0FFH = ROM data. *)
+  tap.SaveByte(3);  (* Always 3: Byte indicates a byte header. *)
   (* Write the CODE name (10 bytes, if less, filled with spaces). *)
   tap.SaveName(name);
   (* Write CODE data length (after the header). SCREEN$ length = 6912. *)
@@ -194,7 +194,7 @@ BEGIN
   (* Write CODE start address. SCREEN$ header start address = 16384.   *)
   tap.SaveWord(dataStartAddr);
   tap.SaveWord(32768); (* Always = 32768. *)
-  tap.SaveCheckSum;  (* Simply all bytes (including flag byte) XORed. *)
+  tap.SaveCheckSum; (* Simply all bytes (including flag byte) XORed. *)
 END SaveCodeHeader;
 
 (*----------------------------------------------------------------------------*)
@@ -216,7 +216,7 @@ VAR
 BEGIN
   tap.SaveWord(1 + dataLength + 1); (* flag + data length + checksum. *)
   tap.checksum := {};
-  tap.SaveByte(0FFX);  (* 255 indicates a standard ROM loading data block. *)
+  tap.SaveByte(0FFX); (* 255 indicates a standard ROM loading data block. *)
   FOR i := 0 TO dataLength - 1 DO tap.SaveByte(data[i]) END;
   tap.SaveCheckSum;  (* Simply all bytes (including flag byte) XORed. *)
 END SaveDataBlock;
