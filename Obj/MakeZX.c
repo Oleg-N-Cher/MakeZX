@@ -22,7 +22,7 @@ static void MakeZX_Title (void)
 	Console_WriteLn();
 	Console_WriteLn();
 	Console_WriteLn();
-	Console_WriteStr((CHAR*)"Usage: makezx out_file.tap := in_file.bin[:Starting address]", (LONGINT)61);
+	Console_WriteStr((CHAR*)"Usage: makezx out_file.tap := in_file.bin[:starting address]", (LONGINT)61);
 	Console_WriteLn();
 	Console_WriteStr((CHAR*)"Example: makezx mygame.tap := mygame.bin:32000", (LONGINT)47);
 	Console_WriteLn();

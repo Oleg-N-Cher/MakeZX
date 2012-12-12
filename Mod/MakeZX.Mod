@@ -12,7 +12,7 @@ BEGIN                                  (*/Intel IHX*)
   IO.WriteStr("Copyright (C) 2012 Oleg N. Cher, VEDAsoft Oberon Club"); IO.WriteLn;
   IO.WriteStr("http://sf.net/projects/makezx/   http://zx.oberon2.ru"); IO.WriteLn;
   IO.WriteLn; IO.WriteLn;
-  IO.WriteStr("Usage: makezx out_file.tap := in_file.bin[:Starting address]"); IO.WriteLn;
+  IO.WriteStr("Usage: makezx out_file.tap := in_file.bin[:starting address]"); IO.WriteLn;
   IO.WriteStr("Example: makezx mygame.tap := mygame.bin:32000"); IO.WriteLn;
 END Title;
 
