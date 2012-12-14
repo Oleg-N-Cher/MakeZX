@@ -1,6 +1,6 @@
 MODULE ZXBasic; (** portable. *)
 
-IMPORT Platform;
+IMPORT Platform, Strings;
 
 CONST
   LoaderStartLine = 10; (* Must be < 256. *)
@@ -63,27 +63,11 @@ Example:
 
   PROCEDURE AddIntAsVAL (num: INTEGER); (* {0..99999} only. *)
   VAR
-    digit: INTEGER; nonzero: BOOLEAN;
+    i: INTEGER; buf: ARRAY 6 OF CHAR;
   BEGIN
     Add(0B0X); Add(022X); (* VAL " *)
-    nonzero := FALSE;
-    digit := num DIV 10000;
-    IF digit # 0 THEN
-      Add(SHORT(digit + ORD("0"))); nonzero := TRUE;
-    END;
-    digit := (num DIV 1000) MOD 10;
-    IF nonzero OR (digit # 0) THEN
-      Add(SHORT(digit + ORD("0"))); nonzero := TRUE;
-    END;
-    digit := (num DIV 100) MOD 10;
-    IF nonzero OR (digit # 0) THEN
-      Add(SHORT(digit + ORD("0"))); nonzero := TRUE;
-    END;
-    digit := (num DIV 10) MOD 10;
-    IF nonzero OR (digit # 0) THEN
-      Add(SHORT(digit + ORD("0")));
-    END;
-    Add(SHORT(num MOD 10 + ORD("0")));
+    Strings.IntToStr(num, buf);
+    i := 0; REPEAT Add(buf[i]); INC(i) UNTIL buf[i] = 0X;
     Add(022X); (* " *)
   END AddIntAsVAL;
 (*
@@ -112,5 +96,5 @@ END GenTapeLoader;
 END ZXBasic.
 
 (* TODO:
- implement GenTapeLoader must return BOOLEAN state of successful
+ implement optimization - if codeStartAddr = "XX000" THEN use "XXe3"
 *)
