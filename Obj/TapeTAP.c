@@ -70,11 +70,6 @@ static void TapeTAP_TapeFile_SaveWord (TapeTAP_TapeFile *tap, LONGINT *tap__typ,
 	}
 }
 
-static void TapeTAP_TapeFile_SaveCheckSum (TapeTAP_TapeFile *tap, LONGINT *tap__typ)
-{
-	__Files_FileToWrite_WriteByte(&(*tap).file, Files_FileToWrite__typ, (int)Platform_ORD((*tap).checksum));
-}
-
 static void TapeTAP_TapeFile_SaveName (TapeTAP_TapeFile *tap, LONGINT *tap__typ, CHAR *name, LONGINT name__len)
 {
 	INTEGER i, nameIdx;
@@ -89,6 +84,11 @@ static void TapeTAP_TapeFile_SaveName (TapeTAP_TapeFile *tap, LONGINT *tap__typ,
 		}
 		i += 1;
 	}
+}
+
+static void TapeTAP_TapeFile_SaveCheckSum (TapeTAP_TapeFile *tap, LONGINT *tap__typ)
+{
+	__Files_FileToWrite_WriteByte(&(*tap).file, Files_FileToWrite__typ, (int)Platform_ORD((*tap).checksum));
 }
 
 static void TapeTAP_TapeFile_SaveBasicHeader (TapeTAP_TapeFile *tap, LONGINT *tap__typ, CHAR *name, LONGINT name__len, INTEGER startLine, INTEGER dataLength)

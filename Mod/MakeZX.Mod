@@ -3,7 +3,7 @@ MODULE MakeZX; (** portable *)
 IMPORT
   Platform, IO := Console, Cmd := CmdLine,
   (* Supported format: TAP *)
-  Tap := TapeTAP;
+  Tap := TapeTAP, ZXBasic;
 
 PROCEDURE Title;
 BEGIN                                  (*/Intel IHX*)
@@ -92,9 +92,22 @@ BEGIN
   END;
 END CreateTape;
 
+PROCEDURE AddBasic;
+VAR
+  tap: Tap.TapeFile;
+  loaderLen: INTEGER;
+  data: ARRAY 65536 OF Platform.BYTE;
+BEGIN
+  ZXBasic.GenTapeLoader(26000, loaderLen, data);
+  tap.ReCreate("loader.tap");
+  tap.SaveBasic("Loader", 10, loaderLen, data);
+  tap.Finalize;
+END AddBasic;
+  
 BEGIN
   Title;
   CreateTape;
+  AddBasic;
 END MakeZX.
 
 (* Принцип обработки ошибок: если что-то идёт не так - ругайся. *)
