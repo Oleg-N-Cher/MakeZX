@@ -98,9 +98,15 @@ VAR
   loaderLen: INTEGER;
   data: ARRAY 65536 OF Platform.BYTE;
 BEGIN
+  (* BASIC *)
   ZXBasic.GenTapeLoader(26000, loaderLen, data);
   tap.ReCreate("loader.tap");
   tap.SaveBasic("Loader", 10, loaderLen, data);
+  (* CODE *)
+  data[0] := 3EX; data[1] := 41X; (* LD A,"A" *)
+  data[2] := 0D7X; (* RST #10 *)
+  data[3] := 0C9X; (* RET *)
+  tap.SaveCode("mycode", 26000, 4, data);
   tap.Finalize;
 END AddBasic;
   
