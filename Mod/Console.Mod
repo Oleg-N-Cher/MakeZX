@@ -32,7 +32,8 @@ BEGIN
   IF SIZE(LONGINT) = 8 THEN writeLInt(n) END;
 END WriteInt;
 
-PROCEDURE WriteStr* (str: ARRAY [1] OF CHAR); (** Write ANSI string into console. *)
+PROCEDURE WriteStr* (str: ARRAY [1] OF CHAR); (* Write ANSI string into console. *)
+  (** UNSAFE! Make sure that value of array 'str' is null-terminated. *)
 BEGIN writeStr(str) END WriteStr;
 
 PROCEDURE WriteLn* ; (** Write from next line (CR). *)

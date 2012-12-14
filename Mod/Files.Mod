@@ -54,6 +54,7 @@ PROCEDURE -unlink (filename: PtrSTR): INTEGER "unlink(filename)"; (* IF = 0 THEN
                 calling IsNoError.
 *)
 PROCEDURE (VAR file: File) OpenToRead* (fname: STRING);
+  (** UNSAFE! Make sure that value of array 'fname' is null-terminated. *)
 BEGIN
   file.error := FALSE; (* Reset this flag once - at start of work with a file. *)
   (* file.state := Successful; *)
@@ -73,6 +74,7 @@ END OpenToRead;
                  calling IsNoError.
 *)
 PROCEDURE (VAR file: File) OpenToWrite* (fname: STRING);
+  (** UNSAFE! Make sure that value of array 'fname' is null-terminated. *)
 BEGIN
   file.error := FALSE; (* Reset this flag once - at start of work with a file. *)
   (* file.state := Successful; *)
@@ -134,6 +136,7 @@ END WriteByte;
    DeleteFile - returns TRUE if a file named, fname is successfully deleted.
 *)
 PROCEDURE DeleteFile* (fname: STRING): BOOLEAN;
+  (** UNSAFE! Make sure that value of array 'fname' is null-terminated. *)
 BEGIN
   RETURN unlink(fname) = 0
 END DeleteFile;
@@ -142,6 +145,7 @@ END DeleteFile;
    ExistsFile - returns TRUE if a file named, fname exists for reading.
 *)
 PROCEDURE ExistsFile* (fname: STRING): BOOLEAN;
+  (** UNSAFE! Make sure that value of array 'fname' is null-terminated. *)
 VAR
   f: FileToRead;
 BEGIN

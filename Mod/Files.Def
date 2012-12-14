@@ -12,14 +12,14 @@ TYPE
   FileToWrite = RECORD (File) (* Binary file to write only. *)
   END;
 
-PROCEDURE (VAR file: File) OpenToRead (fname: STRING);
-PROCEDURE (VAR file: File) OpenToWrite (fname: STRING);
+PROCEDURE (VAR file: File) OpenToRead (fname: STRING); (* UNSAFE! Make sure that value of array 'fname' is null-terminated. *)
+PROCEDURE (VAR file: File) OpenToWrite (fname: STRING); (* UNSAFE! Make sure that value of array 'fname' is null-terminated. *)
 PROCEDURE (VAR file: File) Close;
 
 PROCEDURE (VAR fromfile: FileToRead) ReadByte (): SYSTEM.BYTE;
 PROCEDURE (VAR tofile: FileToWrite) WriteByte (byte: SYSTEM.BYTE);
 
-PROCEDURE DeleteFile (fname: STRING): BOOLEAN;
-PROCEDURE ExistsFile (fname: STRING): BOOLEAN;
+PROCEDURE DeleteFile (fname: STRING): BOOLEAN; (* UNSAFE! Make sure that value of array 'fname' is null-terminated. *)
+PROCEDURE ExistsFile (fname: STRING): BOOLEAN; (* UNSAFE! Make sure that value of array 'fname' is null-terminated. *)
 
 END Files.
