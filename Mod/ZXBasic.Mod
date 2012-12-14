@@ -3,7 +3,9 @@ MODULE ZXBasic; (** portable. *)
 IMPORT Platform, Strings;
 
 CONST
-  LoaderStartLine = 10; (* Must be < 256. *)
+  LoaderStartLine* = 10; (* Must be < 256. *)
+  MinCodeStartAddr* = 23900;
+  MaxCodeStartAddr* = 0FFFFH;
 (*
   "DEFFN","CAT","FORMAT","MOVE","ERASE","OPEN#",
 	"CLOSE#","MERGE","VERIFY","BEEP","CIRCLE","INK",
@@ -20,8 +22,9 @@ TYPE
 
 PROCEDURE GenTapeLoader* (
   codeStartAddr: INTEGER; VAR loaderLen: INTEGER; VAR loader: ARRAY OF BYTE);
-(** After calling of this procedure: loaderLen IN{1..LEN(loader)}, OK;
-    loaderLen = 0, if codeStartAddr ~IN{0..65535} or LEN(loader) < 6;
+(** After calling of this procedure: loaderLen IN{6..LEN(loader)}, OK;
+    loaderLen = 0, if codeStartAddr ~IN{MinCodeStartAddr..MaxCodeStartAddr}
+                   or LEN(loader) < 6;
     loaderLen > LEN(loader), if size of array 'loader' is not enough. *)
 
 (* Basic program line in memory:
@@ -62,12 +65,14 @@ Example:
   END Add;
 
   PROCEDURE AddIntAsVAL (num: INTEGER); (* {0..99999} only. *)
+  CONST
+    StrLen = 6; (* LEN("99999") *)
   VAR
-    i: INTEGER; buf: ARRAY 6 OF CHAR;
+    i: INTEGER; str: ARRAY StrLen OF CHAR;
   BEGIN
     Add(0B0X); Add(022X); (* VAL " *)
-    Strings.IntToStr(num, buf);
-    i := 0; REPEAT Add(buf[i]); INC(i) UNTIL buf[i] = 0X;
+    Strings.IntToStr(num, str);
+    i := 0; REPEAT Add(str[i]); INC(i) UNTIL str[i] = 0X;
     Add(022X); (* " *)
   END AddIntAsVAL;
 (*
@@ -80,7 +85,8 @@ Example:
 *)
 BEGIN
   loaderLen := 0;
-  IF (LEN(loader) >= 6) & (codeStartAddr >= 0) & (codeStartAddr <= 0FFFFH) THEN
+  IF (LEN(loader) > 5)
+  & (codeStartAddr >= MinCodeStartAddr)&(codeStartAddr <= MaxCodeStartAddr) THEN
     Add(0); Add(LoaderStartLine);              (* 10 BASIC line number *)
     (*marked := loaderLen;*) Add(0); Add(0);   (* BASIC line length *)
     Add(0FDX); AddIntAsVAL(codeStartAddr - 1); (* CLEAR VAL "codeStartAddr-1" *)
