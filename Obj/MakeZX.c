@@ -122,7 +122,7 @@ static void MakeZX_GetTapeName (INTEGER param, INTEGER *addr, CmdLine_String nam
 		}
 		n += 1;
 	}
-	if (colonPos >= 0) {
+	if (colonPos != -1) {
 		StrToInt__4(colonPos + 1, parLen - 1, &*addr);
 	} else {
 		*addr = 26000;
@@ -187,11 +187,11 @@ static void MakeZX_MakeZX (void)
 	INTEGER loaderLen;
 	maxStartAddr = -1;
 	nParWithMaxStartAddr = -1;
-	tapPar = 0;
+	tapPar = -1;
 	nPar = 1;
 	do {
 		if (MakeZX_IsTAP(nPar)) {
-			if (tapPar == 0) {
+			if (tapPar == -1) {
 				tapPar = nPar;
 			} else {
 				Console_WriteStr((CHAR*)"Conflict of the names \"", (LONGINT)24);
@@ -213,7 +213,7 @@ static void MakeZX_MakeZX (void)
 		}
 		nPar += 1;
 	} while (!(nPar > CmdLine_paramCount));
-	if (tapPar > 0) {
+	if (tapPar != -1) {
 		MakeZX_GetTapeName(tapPar, &startAddr, tapeName, &dotPos, 0);
 	} else {
 		MakeZX_GetTapeName(nParWithMaxStartAddr, &startAddr, tapeName, &dotPos, 1);
@@ -266,10 +266,10 @@ export main(int argc, char **argv)
 		Console_WriteStr((CHAR*)"Usage: makezx out_file.tap := in_file.bin[:starting address]", (LONGINT)61);
 		Console_WriteLn();
 		Console_WriteStr((CHAR*)"Example: makezx mygame.tap := mygame.bin:32000", (LONGINT)47);
-		Console_WriteLn();
-		Console_WriteLn();
 	} else {
 		MakeZX_MakeZX();
 	}
+	Console_WriteLn();
+	Console_WriteLn();
 	__FINI;
 }
