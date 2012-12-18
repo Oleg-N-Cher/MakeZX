@@ -8,7 +8,7 @@ TYPE
   ArgVec = POINTER [1] TO ARRAY [1] 1024 OF ArgPtr;
 
 VAR
-  paramCount-: LONGINT; (* argc - 1 *)
+  paramCount-: INTEGER; (* argc - 1 *)
 
 PROCEDURE -argc(): INTEGER "SYSTEM_argc";
 PROCEDURE -argv(): LONGINT "(long)SYSTEM_argv";

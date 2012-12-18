@@ -6,10 +6,13 @@
 #include "SYSTEM.h"
 
 typedef
+	CHAR (*CmdLine_ArgPtr)[1024];
+
+typedef
 	CHAR CmdLine_String[1024];
 
 
-import LONGINT CmdLine_paramCount;
+import INTEGER CmdLine_paramCount;
 
 
 import void CmdLine_GetParam (INTEGER n, CHAR *param, LONGINT param__len);
