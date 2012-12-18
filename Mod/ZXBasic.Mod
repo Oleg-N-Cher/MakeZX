@@ -4,6 +4,7 @@ IMPORT Platform, Strings;
 
 CONST
   LoaderStartLine* = 10; (* Must be < 256. *)
+  DefaultCodeStartAddr* = 26000;
   MinCodeStartAddr* = 23900;
   MaxCodeStartAddr* = 0FFFFH;
 (*
