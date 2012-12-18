@@ -6,9 +6,6 @@
 #include "SYSTEM.h"
 
 typedef
-	CHAR (*CmdLine_ArgPtr)[1024];
-
-typedef
 	CHAR CmdLine_String[1024];
 
 

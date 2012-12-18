@@ -30,15 +30,15 @@ static void Add__2 (SYSTEM_BYTE b)
 static void AddIntAsVAL__4 (INTEGER num)
 {
 	INTEGER i;
-	CHAR buf[6];
+	CHAR str[6];
 	Add__2(0xb0);
 	Add__2('\"');
-	Strings_IntToStr(num, (void*)buf, 6);
+	Strings_IntToStr(num, (void*)str, 6);
 	i = 0;
 	do {
-		Add__2(buf[__X(i, 6)]);
+		Add__2(str[__X(i, 6)]);
 		i += 1;
-	} while (!(buf[__X(i, 6)] == 0x00));
+	} while (!(str[__X(i, 6)] == 0x00));
 	Add__2('\"');
 }
 
@@ -50,7 +50,7 @@ void ZXBasic_GenTapeLoader (INTEGER codeStartAddr, INTEGER *loaderLen, SYSTEM_BY
 	_s.lnk = GenTapeLoader__1_s;
 	GenTapeLoader__1_s = &_s;
 	*loaderLen = 0;
-	if ((loader__len >= 6 && codeStartAddr >= 0) && codeStartAddr <= 65535) {
+	if ((loader__len > 5 && codeStartAddr >= 23900) && codeStartAddr <= 65535) {
 		Add__2(0);
 		Add__2(10);
 		Add__2(0);
