@@ -14,5 +14,6 @@ import void *Console__init(void);
 #define Console_WriteCh(ch)	printf("%c", ch)
 #define Console_WriteLn()	printf("\n")
 #define Console_WriteStr(str, str__len)	printf("%s", str)
+#define Console_WriteStrLn(str, str__len)	printf("%s\n", str)
 
 #endif

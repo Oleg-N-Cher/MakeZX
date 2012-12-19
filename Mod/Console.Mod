@@ -16,7 +16,8 @@ PROCEDURE -writeLInt (n: LONGINT)	'printf("%lld", n)';
 *)
 PROCEDURE -WriteStr* (str: ARRAY [1] OF CHAR)	'printf("%s", str)';
   (** UNSAFE! Make sure that value of array 'str' is null-terminated. *)
-
+PROCEDURE -WriteStrLn* (str: ARRAY [1] OF CHAR)	'printf("%s\n", str)';
+  (** UNSAFE! Make sure that value of array 'str' is null-terminated. *)
 PROCEDURE -WriteCh* (ch: CHAR)	'printf("%c", ch)'; (** Write character. *)
   
 PROCEDURE -WriteLn*	'printf("\n")'; (** Write from next line (CR). *)
