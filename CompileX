@@ -1,3 +1,0 @@
-gcc Obj/Console.c Obj/CmdLine.c Obj/SYSTEM.c Obj/MakeZX.c -s -oMakeZX
-./MakeZX par1 2222 "3333A AAAAAAA" 444 555555555555555555
-
