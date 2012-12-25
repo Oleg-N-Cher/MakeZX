@@ -1,0 +1,6 @@
+cd Obj
+gcc -Wall -O3 SYSTEM.c Platform.c Console.c CmdLine.c Files.c Strings.c TapeTAP.c ZXBasic.c MakeZX.c -s -omakezx
+mv makezx ..
+cd ..
+./makezx par1 2222 "3333A AAAAAAA" 444 555555555555555555
+

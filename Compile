@@ -1,0 +1,15 @@
+cd Obj
+rm *.o
+
+tcc -c SYSTEM.c
+tcc -c Platform.c
+tcc -c Console.c
+tcc -c CmdLine.c
+tcc -c Files.c
+tcc -c Strings.c
+tcc -c TapeTAP.c
+tcc -c ZXBasic.c
+tcc MakeZX.c SYSTEM.o Platform.o Console.o CmdLine.o Files.o Strings.o TapeTAP.o ZXBasic.o -omakezx
+
+mv makezx ..
+
