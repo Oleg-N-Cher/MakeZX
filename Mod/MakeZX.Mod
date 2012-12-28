@@ -1,24 +1,26 @@
-MODULE MakeZX; (** portable *)
+MODULE MakeZX;	(** portable *)
 
-(*
-Полный вариант:
-  makezx in_file.bin[:addr] out_file.tap
-Наоборот (делать ли?):
-  makezx out_file.tap in_file.bin[:addr]
-Короткий вариант:
-  makezx in_file.bin[:addr]
-Оберон-стиль:
-  makezx out_file.tap := in_file.bin[:addr]
+(* ВНИМАНИЕ. Здесь реализованы модели передачи аргументов на любой вкус.
+   Документирован только лишь один Оберон-стиль. Также допускается задание
+   не одного двоичного файла, а нескольких, что сделано "на вырост", ибо
+   при текущем загрузчике по умолчанию смысла в этом мало.
+
+1. Полный вариант:
+      makezx in_file.bin[:addr] out_file.tap
+2. Наоборот:
+      makezx out_file.tap in_file.bin[:addr]
+3. Краткий вариант (имя входного файла с макс.адресом определяет имя выходного):
+      makezx in_file.bin[:addr]
+4. Переадресация (целевой файл в конце):
+      makezx in_file.bin[:addr] => out_file.tap
+5. Оберон-стиль:
+      makezx out_file.tap := in_file.bin[:addr]
 *)
 
 IMPORT
   Platform, IO := Console, Cmd := CmdLine, Strings, ZXBasic,
   (* Supported format: TAP *)
   Tap := TapeTAP;
-
-CONST
-  AddTapExt = TRUE;
-  NotFound = -1;
 
 (*
   name     type len start  prog |
@@ -35,65 +37,50 @@ CONST
 05 OOOOOOOOOOOOOOOOOOOOOOO  7560
 *)
 
-PROCEDURE HaltError (str: Platform.STRING); (* Mark found error. *)
+PROCEDURE HaltError (err: Platform.STRING); (* Mark found error. *)
 BEGIN
-  IO.WriteStr(str); IO.WriteLn; IO.WriteLn; HALT(1);
+  IO.WriteStrLn(err); IO.WriteLn; HALT(1) (* Exit to OS with error code 1. *)
 END HaltError;
-
-PROCEDURE IsTAP (param: INTEGER): BOOLEAN; (* Check: is a param.ext. ".tap"? *)
-VAR
-  parStr: Cmd.String; parLen: LONGINT;
-BEGIN
-  Cmd.GetParam(param, parStr); parLen := Strings.Length(parStr);
-  IF (parLen >= 5)
-   & (    parStr[parLen - 4]  = '.')
-   & (CAP(parStr[parLen - 3]) = "T")
-   & (CAP(parStr[parLen - 2]) = "A")
-   & (CAP(parStr[parLen - 1]) = "P") THEN RETURN TRUE;
-  END;
-  RETURN FALSE;
-END IsTAP;
 
 PROCEDURE GetTapeName (
   param: INTEGER; VAR addr: INTEGER; VAR name: Cmd.String; VAR dotPos: INTEGER; addTapExt: BOOLEAN);
   (* Parser of a parameter name. *)
+CONST
+  NotFound = -1;
 VAR
   parStr: Cmd.String; n, parLen, colonPos, startPos: INTEGER;
 
   PROCEDURE StrToInt (minPos, maxPos: INTEGER; VAR result: INTEGER);
   (* Parser of an address - a decimal or hexadecimal number. *)
   VAR
-    i, resHex: INTEGER; isHex, isNum, done: BOOLEAN;
+    i, resHex: INTEGER; isHex, isNum, done: BOOLEAN; ch: CHAR;
   BEGIN
     result := 0;
     IF (minPos >= 0) & (maxPos < parLen) THEN (* Check position. *)
       resHex := 0; done := FALSE; isHex := FALSE; isNum := FALSE;
       (*FOR*)i := minPos;(*TO maxPos DO*) WHILE i <= maxPos DO
         IF done THEN HaltError("Please check input file address.") END;
-        CASE parStr[i] OF
+        ch := CAP(parStr[i]);
+        CASE ch OF
         | "0".."9":
           isNum := TRUE;
-          result := result*10 + ORD(parStr[i]) - ORD("0");
-          resHex := resHex*16 + ORD(parStr[i]) - ORD("0");
+          result := result*10 + ORD(ch) - ORD("0");
+          resHex := resHex*16 + ORD(ch) - ORD("0");
         | "A".."F":
           isNum := TRUE; isHex := TRUE;
-          result := result*10 + ORD(parStr[i]) - ORD("A") + 10;
-          resHex := resHex*16 + ORD(parStr[i]) - ORD("A") + 10;
-        | "a".."f":
-          isNum := TRUE; isHex := TRUE;
-          result := result*10 + ORD(parStr[i]) - ORD("a") + 10;
-          resHex := resHex*16 + ORD(parStr[i]) - ORD("a") + 10;
-        | "H", "h":
+          result := result*10 + ORD(ch) - ORD("A") + 10;
+          resHex := resHex*16 + ORD(ch) - ORD("A") + 10;
+        | "H":
           isHex := TRUE; done := TRUE;
         ELSE
           IO.WriteStr('Cannot calculate input file address. Wrong character "');
-          IO.WriteCh(parStr[i]); HaltError('".');
+          IO.WriteCh(parStr[i]); HaltError('".')
         END;
       INC(i);
       END;
       IF ~isNum THEN (* It's not a number. *)
         IO.WriteStr('Wrong address specified in parameter "');
-        IO.WriteStr(parStr); HaltError('".');
+        IO.WriteStr(parStr); HaltError('".')
       END;
       IF isHex THEN result := resHex END;
     END;
@@ -120,7 +107,7 @@ BEGIN
   END;
   IF startPos > 0 THEN (* Slash found. *)
     DEC(parLen, startPos); DEC(dotPos, startPos);
-    FOR n := 0 TO parLen - 1 DO name[n] := name[n + startPos] END; name[parLen] := 0X; IO.WriteStr(name) ; IO.WriteLn;
+    FOR n := 0 TO parLen - 1 DO name[n] := name[n + startPos] END; name[parLen] := 0X; (*IO.WriteStrLn(name)*)
   END;
   IF dotPos < 0 THEN (* "." not found. *)
     dotPos := parLen;
@@ -134,45 +121,87 @@ BEGIN
   END;
 END GetTapeName;
 
-PROCEDURE MakeZX; (* Parser of specified command line parameters. *)
+PROCEDURE MakeZX; (* Parse the command line parameters. Generate TAP file. *)
+
+CONST
+  AddTapExt = TRUE;
+  NotFound = -1;
+
 VAR
-  nPar, tapPar, startAddr, maxStartAddr, nParWithMaxStartAddr, dotPos: INTEGER;
-  strPar, tapeName: Cmd.String;
-  tap: Tap.TapeFile; data: ARRAY 65536 OF Platform.BYTE; loaderLen: INTEGER;
+  paramN,       (* A current parameter number {1..Cmd.paramCount}. *)
+  tapParamN,    (* The "*.tap" parameter number. *)
+  startAddr,
+  maxStartAddr, (* To search a possible "*.tap" file name from a binary file. *)
+  paramWithMaxStartAddrN, (* Number of the parameter with max. start address. *)
+  dotPos: INTEGER;
+  paramStr, (* A current parameter string, indexed by paramN. *)
+  tapeName: Cmd.String;
+  tap: Tap.TapeFile;
+  data: ARRAY 65536 OF Platform.BYTE; (* ZX Spectrum binary data. *)
+  loaderLen: INTEGER;
+
+  PROCEDURE IsTAP (): BOOLEAN;
+    (* Check: has a current paramStr[paramN] the extens. "*.tap"? *)
+  VAR
+    paramStrLen: LONGINT;
+  BEGIN
+    paramStrLen := Strings.Length(paramStr);
+    IF (paramStrLen >= 5) (* LEN("*.tap") *)
+     & (    paramStr[paramStrLen - 4]  = ".")
+     & (CAP(paramStr[paramStrLen - 3]) = "T")
+     & (CAP(paramStr[paramStrLen - 2]) = "A")
+     & (CAP(paramStr[paramStrLen - 1]) = "P") THEN RETURN TRUE
+    END;
+    RETURN FALSE
+  END IsTAP;
+
 BEGIN
-  (* Find .tap parameters: *)
-  maxStartAddr := NotFound; nParWithMaxStartAddr := NotFound;
-  tapPar := NotFound;
-  nPar := 1; REPEAT (*FOR nPar := 1 TO Cmd.paramCount TO DO*)
-    IF IsTAP(nPar) THEN
-      IF tapPar = NotFound THEN (* Found first .tap parameter. *)
-        tapPar := nPar;
-      ELSE (* Found second or third, etc. *)
-        IO.WriteStr('Conflict of the names "');
-        Cmd.GetParam(nPar, strPar); IO.WriteStr(strPar); IO.WriteStr('" and "');
-        Cmd.GetParam(tapPar, strPar); IO.WriteStr(strPar); IO.WriteStr('"');
-        IO.WriteLn; HaltError("Please specify a TAP file only once.");
+  (*==========================================================================*)
+  (* Find "*.tap" parameter(s) and non-"*.tap" parameter with max.start addr. *)
+  (*--------------------------------------------------------------------------*)
+  maxStartAddr := -1; paramWithMaxStartAddrN := NotFound; tapParamN := NotFound;
+  paramN := 1; REPEAT (*FOR paramN := 1 TO Cmd.paramCount DO*)
+    Cmd.GetParam(paramN, paramStr);
+    IF IsTAP() THEN (* paramStr[paramN] has the extens. "*.tap". *)
+      IF tapParamN = NotFound THEN (* The first "*.tap" parameter found. *)
+        tapParamN := paramN;
+      ELSE (* The second "*.tap" parameter found. *)
+        IO.WriteStr('Conflict of the names "'); IO.WriteStr(paramStr);
+        IO.WriteStr('" and "'); Cmd.GetParam(tapParamN, paramStr);
+        IO.WriteStr(paramStr); IO.WriteStrLn('".');
+        HaltError("Please specify a TAP file only once.")
       END;
-    ELSE
-      GetTapeName(nPar, startAddr, tapeName, dotPos, ~AddTapExt);
-      IF startAddr > maxStartAddr THEN
-        maxStartAddr := startAddr; nParWithMaxStartAddr := nPar;
+    ELSE (* It's not a "*.tap" parameter. Try to find paramWithMaxStartAddrN. *)
+      (* Get a binary file start address (or default start address: *)
+      GetTapeName(paramN, startAddr, tapeName, dotPos, ~AddTapExt);
+      IF startAddr > maxStartAddr THEN (* A probable "*.tap" file name found. *)
+        maxStartAddr := startAddr; paramWithMaxStartAddrN := paramN;
       END;
     END;
-  INC(nPar) UNTIL nPar > Cmd.paramCount; (*END;*)
-  IF tapPar # NotFound THEN (* Found once ".tap" parameter, as expected. *)
-    GetTapeName(tapPar, startAddr, tapeName, dotPos, ~AddTapExt);
+  INC(paramN) UNTIL paramN > Cmd.paramCount; (*END;*)
+
+  (*==========================================================================*)
+  (*     Analyze: what "*.tap" and not "*.tap" parameters are specified?      *)
+  (*--------------------------------------------------------------------------*)
+  IF paramWithMaxStartAddrN = NotFound THEN (* No one binary file found. *)
+    HaltError("Please specify a binary file to convert to TAP.")
+  END;
+  IF tapParamN # NotFound THEN  (* Once ".tap" parameter found, as expected. *)
+    (* WARNING: GetTapeName used to remove "*..\", "*../" (to incr. safety). *)
+    (* The tool MakeZX can generate "*.tap" files only in current directory. *)
+    GetTapeName(tapParamN, startAddr, tapeName, dotPos, ~AddTapExt);
   ELSE
-    (* ".tap" file is not specified, try to find the most probable name. *)
-    GetTapeName(nParWithMaxStartAddr, startAddr, tapeName, dotPos, AddTapExt);
+    (* "*.tap" file is not specified, try to find the most probable name. *)
+    GetTapeName(paramWithMaxStartAddrN, startAddr, tapeName, dotPos, AddTapExt);
   END;
 
   (*==========================================================================*)
   (*                      Now tapeName is ready to open.                      *)
-  (*==========================================================================*)
+  (*--------------------------------------------------------------------------*)
   tap.ReCreate(tapeName);
   IF tap.error THEN
-    IO.WriteStr('Cannot create tape file "'); IO.WriteStr(tapeName); HaltError('". Wrong file name.');
+    IO.WriteStr('Cannot create tape file "');
+    IO.WriteStr(tapeName); HaltError('". Wrong file name.')
   END;
   (* BASIC *)
   IF dotPos >= 0 THEN tapeName[dotPos] := 0X END;
@@ -189,20 +218,20 @@ BEGIN
   tap.Finalize;
 END MakeZX;
 
-BEGIN (* Main *)
-  (* ============================== ShowTitle =============================== *)
-                                    (*Intel IHX*)
-  IO.WriteStr("MakeZX v1.0: convert a binary file to ZX Spectrum format TAP"); IO.WriteLn;
-  IO.WriteStr("Copyright (C) 2012 Oleg N. Cher, VEDAsoft Oberon Club"); IO.WriteLn;
-  IO.WriteStr("http://sf.net/projects/makezx/   http://zx.oberon2.ru");
-  IO.WriteLn; IO.WriteLn;
-  IF Cmd.paramCount = 0 THEN (* ShowUsage. *)
-    IO.WriteStr("Usage: makezx out_file.tap := in_file.bin[:starting address]"); IO.WriteLn;
-    IO.WriteStr("Example: makezx mygame.tap := mygame.bin:32000");
-  ELSE
+BEGIN (* Main *) (* ShowTitle: *)
+  IO.WriteStrLn("MakeZX v1.0 RC1: convert a binary file to ZX Spectrum format TAP");
+  IO.WriteStrLn("Copyright (C) 2012 Oleg N. Cher, VEDAsoft Oberon Club");
+  IO.WriteStrLn("http://sf.net/projects/makezx/ + http://zx.oberon2.ru");
+  IO.WriteLn;
+  IF Cmd.paramCount = 0 THEN (* ShowUsage: *)
+    IO.WriteStrLn("Usage: makezx out_file.tap := in_file.bin[:starting address]");
+    IO.WriteStrLn("Example: makezx mygame.tap := mygame.bin:32000");
+  ELSE (* Cmd.paramCount >= 1 *)
     MakeZX;
   END;
-  IO.WriteLn; IO.WriteLn;
+  IO.WriteLn;
 END MakeZX.
 
-(* Принцип обработки ошибок: если что-то идёт не так - ругайся. *)
+(* TODO:
+  implement supporting the Intel IHX format.
+*)

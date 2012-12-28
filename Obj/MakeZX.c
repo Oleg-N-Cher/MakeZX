@@ -11,29 +11,15 @@
 
 
 static void MakeZX_GetTapeName (INTEGER param, INTEGER *addr, CmdLine_String name, INTEGER *dotPos, BOOLEAN addTapExt);
-static void MakeZX_HaltError (CHAR *str, LONGINT str__len);
-static BOOLEAN MakeZX_IsTAP (INTEGER param);
+static void MakeZX_HaltError (CHAR *err, LONGINT err__len);
 static void MakeZX_MakeZX (void);
 
 
-static void MakeZX_HaltError (CHAR *str, LONGINT str__len)
+static void MakeZX_HaltError (CHAR *err, LONGINT err__len)
 {
-	Console_WriteStr(str, str__len);
-	Console_WriteLn();
+	Console_WriteStrLn(err, err__len);
 	Console_WriteLn();
 	__HALT(1);
-}
-
-static BOOLEAN MakeZX_IsTAP (INTEGER param)
-{
-	CmdLine_String parStr;
-	LONGINT parLen;
-	CmdLine_GetParam(param, (void*)parStr, 1024);
-	parLen = Strings_Length((void*)parStr, 1024);
-	if ((((parLen >= 5 && parStr[__X(parLen - 4, 1024)] == '.') && __CAP(parStr[__X(parLen - 3, 1024)]) == 'T') && __CAP(parStr[__X(parLen - 2, 1024)]) == 'A') && __CAP(parStr[__X(parLen - 1, 1024)]) == 'P') {
-		return 1;
-	}
-	return 0;
 }
 
 static struct GetTapeName__1 {
@@ -48,6 +34,7 @@ static void StrToInt__4 (INTEGER minPos, INTEGER maxPos, INTEGER *result)
 {
 	INTEGER i, resHex;
 	BOOLEAN isHex, isNum, done;
+	CHAR ch;
 	*result = 0;
 	if (minPos >= 0 && maxPos < *GetTapeName__1_s->parLen) {
 		resHex = 0;
@@ -59,28 +46,22 @@ static void StrToInt__4 (INTEGER minPos, INTEGER maxPos, INTEGER *result)
 			if (done) {
 				MakeZX_HaltError((CHAR*)"Please check input file address.", (LONGINT)33);
 			}
-			switch ((*GetTapeName__1_s->parStr)[__X(i, 1024)]) {
+			ch = __CAP((*GetTapeName__1_s->parStr)[__X(i, 1024)]);
+			switch (ch) {
 				case '0': case '1': case '2': case '3': case '4': 
 				case '5': case '6': case '7': case '8': case '9': 
 					isNum = 1;
-					*result = (*result * 10 + (int)(*GetTapeName__1_s->parStr)[__X(i, 1024)]) - 48;
-					resHex = (__ASHL(resHex, 4) + (int)(*GetTapeName__1_s->parStr)[__X(i, 1024)]) - 48;
+					*result = (*result * 10 + (int)ch) - 48;
+					resHex = (__ASHL(resHex, 4) + (int)ch) - 48;
 					break;
 				case 'A': case 'B': case 'C': case 'D': case 'E': 
 				case 'F': 
 					isNum = 1;
 					isHex = 1;
-					*result = ((*result * 10 + (int)(*GetTapeName__1_s->parStr)[__X(i, 1024)]) - 65) + 10;
-					resHex = ((__ASHL(resHex, 4) + (int)(*GetTapeName__1_s->parStr)[__X(i, 1024)]) - 65) + 10;
+					*result = ((*result * 10 + (int)ch) - 65) + 10;
+					resHex = ((__ASHL(resHex, 4) + (int)ch) - 65) + 10;
 					break;
-				case 'a': case 'b': case 'c': case 'd': case 'e': 
-				case 'f': 
-					isNum = 1;
-					isHex = 1;
-					*result = ((*result * 10 + (int)(*GetTapeName__1_s->parStr)[__X(i, 1024)]) - 97) + 10;
-					resHex = ((__ASHL(resHex, 4) + (int)(*GetTapeName__1_s->parStr)[__X(i, 1024)]) - 97) + 10;
-					break;
-				case 'H': case 'h': 
+				case 'H': 
 					isHex = 1;
 					done = 1;
 					break;
@@ -162,8 +143,7 @@ static void MakeZX_GetTapeName (INTEGER param, INTEGER *addr, CmdLine_String nam
 			n += 1;
 		}
 		name[__X(parLen, 1024)] = 0x00;
-		Console_WriteStr(name, 1024);
-		Console_WriteLn();
+		Console_WriteStrLn(name, 1024);
 	}
 	if (*dotPos < 0) {
 		*dotPos = parLen;
@@ -178,45 +158,68 @@ static void MakeZX_GetTapeName (INTEGER param, INTEGER *addr, CmdLine_String nam
 	GetTapeName__1_s = _s.lnk;
 }
 
+static struct MakeZX__7 {
+	CmdLine_String *paramStr;
+	struct MakeZX__7 *lnk;
+} *MakeZX__7_s;
+
+static BOOLEAN IsTAP__8 (void);
+
+static BOOLEAN IsTAP__8 (void)
+{
+	LONGINT paramStrLen;
+	paramStrLen = Strings_Length((void*)*MakeZX__7_s->paramStr, 1024);
+	if ((((paramStrLen >= 5 && (*MakeZX__7_s->paramStr)[__X(paramStrLen - 4, 1024)] == '.') && __CAP((*MakeZX__7_s->paramStr)[__X(paramStrLen - 3, 1024)]) == 'T') && __CAP((*MakeZX__7_s->paramStr)[__X(paramStrLen - 2, 1024)]) == 'A') && __CAP((*MakeZX__7_s->paramStr)[__X(paramStrLen - 1, 1024)]) == 'P') {
+		return 1;
+	}
+	return 0;
+}
+
 static void MakeZX_MakeZX (void)
 {
-	INTEGER nPar, tapPar, startAddr, maxStartAddr, nParWithMaxStartAddr, dotPos;
-	CmdLine_String strPar, tapeName;
+	INTEGER paramN, tapParamN, startAddr, maxStartAddr, paramWithMaxStartAddrN, dotPos;
+	CmdLine_String paramStr, tapeName;
 	TapeTAP_TapeFile tap;
 	SYSTEM_BYTE data[65536];
 	INTEGER loaderLen;
+	struct MakeZX__7 _s;
+	_s.paramStr = (void*)paramStr;
+	_s.lnk = MakeZX__7_s;
+	MakeZX__7_s = &_s;
 	maxStartAddr = -1;
-	nParWithMaxStartAddr = -1;
-	tapPar = -1;
-	nPar = 1;
+	paramWithMaxStartAddrN = -1;
+	tapParamN = -1;
+	paramN = 1;
 	do {
-		if (MakeZX_IsTAP(nPar)) {
-			if (tapPar == -1) {
-				tapPar = nPar;
+		CmdLine_GetParam(paramN, (void*)paramStr, 1024);
+		if (IsTAP__8()) {
+			if (tapParamN == -1) {
+				tapParamN = paramN;
 			} else {
 				Console_WriteStr((CHAR*)"Conflict of the names \"", (LONGINT)24);
-				CmdLine_GetParam(nPar, (void*)strPar, 1024);
-				Console_WriteStr(strPar, 1024);
+				Console_WriteStr(paramStr, 1024);
 				Console_WriteStr((CHAR*)"\" and \"", (LONGINT)8);
-				CmdLine_GetParam(tapPar, (void*)strPar, 1024);
-				Console_WriteStr(strPar, 1024);
-				Console_WriteStr((CHAR*)"\"", (LONGINT)2);
-				Console_WriteLn();
+				CmdLine_GetParam(tapParamN, (void*)paramStr, 1024);
+				Console_WriteStr(paramStr, 1024);
+				Console_WriteStrLn((CHAR*)"\".", (LONGINT)3);
 				MakeZX_HaltError((CHAR*)"Please specify a TAP file only once.", (LONGINT)37);
 			}
 		} else {
-			MakeZX_GetTapeName(nPar, &startAddr, tapeName, &dotPos, 0);
+			MakeZX_GetTapeName(paramN, &startAddr, tapeName, &dotPos, 0);
 			if (startAddr > maxStartAddr) {
 				maxStartAddr = startAddr;
-				nParWithMaxStartAddr = nPar;
+				paramWithMaxStartAddrN = paramN;
 			}
 		}
-		nPar += 1;
-	} while (!(nPar > CmdLine_paramCount));
-	if (tapPar != -1) {
-		MakeZX_GetTapeName(tapPar, &startAddr, tapeName, &dotPos, 0);
+		paramN += 1;
+	} while (!(paramN > CmdLine_paramCount));
+	if (paramWithMaxStartAddrN == -1) {
+		MakeZX_HaltError((CHAR*)"Please specify a binary file to convert to \"*.tap\".", (LONGINT)52);
+	}
+	if (tapParamN != -1) {
+		MakeZX_GetTapeName(tapParamN, &startAddr, tapeName, &dotPos, 0);
 	} else {
-		MakeZX_GetTapeName(nParWithMaxStartAddr, &startAddr, tapeName, &dotPos, 1);
+		MakeZX_GetTapeName(paramWithMaxStartAddrN, &startAddr, tapeName, &dotPos, 1);
 	}
 	__TapeTAP_TapeFile_ReCreate(&tap, TapeTAP_TapeFile__typ, tapeName, 1024);
 	if (tap.error) {
@@ -241,6 +244,7 @@ static void MakeZX_MakeZX (void)
 	data[3] = 0xc9;
 	__TapeTAP_TapeFile_SaveCode(&tap, TapeTAP_TapeFile__typ, (CHAR*)"mycode", (LONGINT)7, 26000, 4, (void*)data, 65536);
 	__TapeTAP_TapeFile_Finalize(&tap, TapeTAP_TapeFile__typ);
+	MakeZX__7_s = _s.lnk;
 }
 
 
@@ -255,21 +259,16 @@ export main(int argc, char **argv)
 	__IMPORT(ZXBasic);
 	__REGMAIN("MakeZX", 0);
 /* BEGIN */
-	Console_WriteStr((CHAR*)"MakeZX v1.0: convert a binary file to ZX Spectrum format TAP", (LONGINT)61);
-	Console_WriteLn();
-	Console_WriteStr((CHAR*)"Copyright (C) 2012 Oleg N. Cher, VEDAsoft Oberon Club", (LONGINT)54);
-	Console_WriteLn();
-	Console_WriteStr((CHAR*)"http://sf.net/projects/makezx/   http://zx.oberon2.ru", (LONGINT)54);
-	Console_WriteLn();
+	Console_WriteStrLn((CHAR*)"MakeZX v1.0 RC1: convert a binary file to ZX Spectrum format TAP", (LONGINT)65);
+	Console_WriteStrLn((CHAR*)"Copyright (C) 2012 Oleg N. Cher, VEDAsoft Oberon Club", (LONGINT)54);
+	Console_WriteStrLn((CHAR*)"http://sf.net/projects/makezx/ + http://zx.oberon2.ru", (LONGINT)54);
 	Console_WriteLn();
 	if (CmdLine_paramCount == 0) {
-		Console_WriteStr((CHAR*)"Usage: makezx out_file.tap := in_file.bin[:starting address]", (LONGINT)61);
-		Console_WriteLn();
-		Console_WriteStr((CHAR*)"Example: makezx mygame.tap := mygame.bin:32000", (LONGINT)47);
+		Console_WriteStrLn((CHAR*)"Usage: makezx out_file.tap := in_file.bin[:starting address]", (LONGINT)61);
+		Console_WriteStrLn((CHAR*)"Example: makezx mygame.tap := mygame.bin:32000", (LONGINT)47);
 	} else {
 		MakeZX_MakeZX();
 	}
-	Console_WriteLn();
 	Console_WriteLn();
 	__FINI;
 }
