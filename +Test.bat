@@ -2,6 +2,9 @@ makezx.exe par1 2TAP "3333A AAAAAAA" 1.Tap 555555555555555555.tAP
 @PAUSE
 makezx.exe .Tap
 @PAUSE
+ECHO GENERATES 'tap.tap«'
+makezx.exe tap.tap
+@PAUSE
 makezx.exe ta\pe.bin
 @PAUSE
 makezx.exe tape.bin:FFFF
@@ -35,4 +38,10 @@ makezx.exe ../bin.bin:100000
 makezx.exe ../bin.bin:4000H bom.bin:7D00H
 @PAUSE
 makezx.exe ../bin.bin:4000H bom.bin:26000 BOM.TaP
+@PAUSE
+makezx.exe F:\..\..**??a.tap
+@PAUSE
+makezx mygame.tap := ../../game.bin:50000
+@PAUSE
+makezx.exe a.bin ..\..**??a.tap
 @PAUSE
