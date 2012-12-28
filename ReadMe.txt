@@ -18,6 +18,12 @@ MakeZX adds to your tape the default boot loader:
 
 10 CLEAR VAL "codeStartAddr-1": LOAD ""CODE : RANDOMIZE USR VAL "codeStartAddr"
 
+The tool MakeZX can generate "*.tap" files
+only in current directory. An input binary file
+can be specified from any place:
+
+makezx mygame.tap := ../../game.bin:50000
+
 
 License
 =======
