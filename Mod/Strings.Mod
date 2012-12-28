@@ -1,4 +1,4 @@
-MODULE Strings; (** non-portable. *)
+MODULE Strings;	(** portable layer for LibC - strings *)
 
 IMPORT SYSTEM;
 
@@ -24,8 +24,8 @@ VAR
   len, maxLen: LONGINT;
 BEGIN
   maxLen := LEN(str); len := 0;
-	WHILE (len < maxLen) & (str[len] # 0X) DO INC(len) END;
-	RETURN len
+  WHILE (len < maxLen) & (str[len] # 0X) DO INC(len) END;
+  RETURN len
 END Length;
 
 END Strings.

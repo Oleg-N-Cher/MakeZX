@@ -1,4 +1,4 @@
-MODULE ZXBasic; (** portable. *)
+MODULE ZXBasic;	(** portable *)
 
 IMPORT Platform, Strings;
 

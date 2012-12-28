@@ -1,4 +1,4 @@
-MODULE Console; (** portable layer for LibC - output to standard out *)
+MODULE Console;	(** portable layer for LibC - output to standard out *)
 
 IMPORT SYSTEM;
 

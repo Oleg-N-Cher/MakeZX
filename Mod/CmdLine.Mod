@@ -1,4 +1,4 @@
-MODULE CmdLine; (** portable layer for LibC - command line parameters handling *)
+MODULE CmdLine;	(** portable layer for LibC - command line parameters handling *)
 
 IMPORT SYSTEM;
 

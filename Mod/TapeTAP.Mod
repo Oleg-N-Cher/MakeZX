@@ -47,7 +47,7 @@ program. If it's a Code file, parameter 1 holds the start of the code block
 when saved, and parameter 2 holds 32768. For data files finally, the byte at
 position 14 decimal holds the variable name. *)
 
-MODULE TapeTAP; (** portable *)
+MODULE TapeTAP;	(** portable *)
 
 IMPORT
   SYSTEM, Platform, Files;

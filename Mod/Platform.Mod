@@ -1,4 +1,4 @@
-MODULE Platform; (** Non-portable. *)
+MODULE Platform;	(* non-portable *)
 
 IMPORT SYSTEM;
 
