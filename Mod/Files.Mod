@@ -1,4 +1,4 @@
-MODULE Files; (** portable layer for LibC - file IO. *)
+MODULE Files;	(** portable layer for LibC - file IO *)
 (*******************************************************************************
 *      Description: provides a simple buffered file input/output library.      *
 ********************************************************************************
@@ -37,18 +37,7 @@ TYPE
   END;
 
 PROCEDURE -includestdio()	"#include <stdio.h>";
-(*
-#if defined(_WIN32) || defined (_WIN64)
-#include <io.h>
-#else
-#include <sys/io.h>
-#endif
-*)
-PROCEDURE -includeio2()	"#include <io.h>";
-PROCEDURE -includeio4()	"#include <sys/io.h>";
-PROCEDURE -includeio1()	"#if defined(_WIN32) || defined (_WIN64)";
-PROCEDURE -includeio3()	"#else";
-PROCEDURE -includeio5()	"#endif";
+PROCEDURE -includeunistd()	"#include <unistd.h>";
 
 PROCEDURE -fopen (filename, mode: PtrSTR): PtrFILE "(int)fopen(filename, mode)";
 PROCEDURE -fgetc (file: PtrFILE): INTEGER "fgetc((FILE*)file)";
