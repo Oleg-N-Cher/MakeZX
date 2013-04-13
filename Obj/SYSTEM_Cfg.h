@@ -13,8 +13,9 @@
 //#define SYSTEM_Cfg_RegisterMain
 //#define SYSTEM_Cfg_RegisterCommands
 
-/* record type descriptors */ 
+/* record type descriptors */
 
+//#define SYSTEM_Cfg_RecTypeDesc
 //#define SYSTEM_Cfg_InitTypes
 
 /* Oberon-2 type bound procedures support */
