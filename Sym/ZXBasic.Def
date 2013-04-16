@@ -1,0 +1,12 @@
+DEFINITION ZXBasic;
+
+  CONST
+    DefaultCodeStartAddr = 26000;
+    LoaderStartLine = 10;
+    MaxCodeStartAddr = 65535;
+    MinCodeStartAddr = 23900;
+
+  PROCEDURE GenTapeLoader (
+    codeStartAddr: INTEGER; VAR loaderLen: INTEGER; VAR loader: ARRAY OF SYSTEM.BYTE);
+
+END ZXBasic.
