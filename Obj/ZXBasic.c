@@ -16,29 +16,30 @@ static struct GenTapeLoader__1 {
 	struct GenTapeLoader__1 *lnk;
 } *GenTapeLoader__1_s;
 
-static void Add__2 (SYSTEM_BYTE b);
+static void Add__2 (SYSTEM_BYTE byte);
 static void AddIntAsVAL__4 (INTEGER num);
 
-static void Add__2 (SYSTEM_BYTE b)
+static void Add__2 (SYSTEM_BYTE byte)
 {
 	if ((LONGINT)*GenTapeLoader__1_s->loaderLen < GenTapeLoader__1_s->loader__len) {
-		GenTapeLoader__1_s->loader[__X(*GenTapeLoader__1_s->loaderLen, GenTapeLoader__1_s->loader__len)] = b;
+		GenTapeLoader__1_s->loader[__X(*GenTapeLoader__1_s->loaderLen, GenTapeLoader__1_s->loader__len)] = byte;
 	}
 	*GenTapeLoader__1_s->loaderLen += 1;
 }
 
 static void AddIntAsVAL__4 (INTEGER num)
 {
-	INTEGER i;
+	INTEGER n;
 	CHAR str[6];
+	__ASSERT(num >= 0 && num <= 99999, 1);
+	Strings_IntToStr(num, (void*)str, 6);
 	Add__2(0xb0);
 	Add__2('\"');
-	Strings_IntToStr(num, (void*)str, 6);
-	i = 0;
+	n = 0;
 	do {
-		Add__2(str[__X(i, 6)]);
-		i += 1;
-	} while (!(str[__X(i, 6)] == 0x00));
+		Add__2(str[__X(n, 6)]);
+		n += 1;
+	} while (!(str[__X(n, 6)] == 0x00));
 	Add__2('\"');
 }
 
@@ -49,8 +50,9 @@ void ZXBasic_GenTapeLoader (INTEGER codeStartAddr, INTEGER *loaderLen, SYSTEM_BY
 	_s.loader = (void*)loader; _s.loader__len = loader__len;
 	_s.lnk = GenTapeLoader__1_s;
 	GenTapeLoader__1_s = &_s;
+	__ASSERT(loader__len > 5, 1);
 	*loaderLen = 0;
-	if ((loader__len > 5 && codeStartAddr >= 23900) && codeStartAddr <= 65535) {
+	if (codeStartAddr >= 23900 && codeStartAddr <= 65535) {
 		Add__2(0);
 		Add__2(10);
 		Add__2(0);
@@ -68,6 +70,9 @@ void ZXBasic_GenTapeLoader (INTEGER codeStartAddr, INTEGER *loaderLen, SYSTEM_BY
 		AddIntAsVAL__4(codeStartAddr);
 		Add__2(0x0d);
 		loader[__X(2, loader__len)] = (int)(*loaderLen - 4);
+		if ((LONGINT)*loaderLen >= loader__len) {
+			*loaderLen = 0;
+		}
 	}
 	GenTapeLoader__1_s = _s.lnk;
 }
@@ -76,8 +81,8 @@ void ZXBasic_GenTapeLoader (INTEGER codeStartAddr, INTEGER *loaderLen, SYSTEM_BY
 export void *ZXBasic__init(void)
 {
 	__DEFMOD;
-	__IMPORT(Platform);
-	__IMPORT(Strings);
+	__IMPORT(Platform__init);
+	__IMPORT(Strings__init);
 	__REGMOD("ZXBasic", 0);
 /* BEGIN */
 	__ENDMOD;
