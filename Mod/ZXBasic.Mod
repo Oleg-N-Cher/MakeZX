@@ -35,17 +35,7 @@ PROCEDURE GenTapeLoader* (codeStartAddr: INTEGER;
     (* ZX-BASIC tokens: *)
     CODE  = 0AFX; VAL = 0B0X; USR = 0C0X; LOAD = 0EFX; RANDOMIZE = 0F9X;
     CLEAR = 0FDX;
-(*VAR
-  marked: INTEGER;*)
-(*
-  PROCEDURE AddLineNum (linenum: INTEGER); (* Add BASIC line number. *)
-  BEGIN
-    ASSERT((linenum >= 0) & (linenum <= 9999), 1);
-    loader[loaderLen] := SHORT(linenum DIV 256); (* MSB *)
-    INC(loaderLen); loader[loaderLen] := SHORT(linenum); (* LSB *)
-    INC(loaderLen); marked := loaderLen; INC(loaderLen, 2); (* Mark index of line length. *)
-  END AddLineNum;
-*)
+
   PROCEDURE Add (byte: Platform.OCTET); (* Add a byte to BASIC line. *)
   BEGIN
     (* Check that LEN(loader) is enough. *)
@@ -57,18 +47,11 @@ PROCEDURE GenTapeLoader* (codeStartAddr: INTEGER;
   VAR
     n: INTEGER; str: ARRAY 5 + 1 (* LEN("99999" + 0X) *) OF CHAR;
   BEGIN
-    ASSERT((num >= 0) & (num <= 99999), 1); Strings.IntToStr(num, str);
-    Add(VAL); Add('"'); (* VAL "num" *)
+    ASSERT((num >= 0) & (num <= 99999), 1);
+    Strings.IntToStr(num, str); Add(VAL); Add('"'); (* VAL "num" *)
     n := 0; REPEAT Add(str[n]); INC(n) UNTIL str[n] = 0X; Add('"');
   END AddIntAsVAL;
-(*
-  PROCEDURE EndOfLine;
-  BEGIN
-    Add(ENTER);
-    loader[marked]     := SHORT (loaderLen - marked);
-    loader[marked + 1] := SHORT((loaderLen - marked) DIV 256);
-  END EndOfLine;
-*)
+
 BEGIN
   ASSERT((LoaderStartLine >= 0) & (LoaderStartLine <= 9999), 1);
   ASSERT(LEN(loader) > 5, 1); loaderLen := 0;
