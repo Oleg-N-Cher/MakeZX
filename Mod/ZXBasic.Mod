@@ -45,11 +45,19 @@ PROCEDURE GenTapeLoader* (codeStartAddr: INTEGER;
 
   PROCEDURE AddIntAsVAL (num: INTEGER); (* {0..99999} only. *)
   VAR
-    n: INTEGER; str: ARRAY 5 + 1 (* LEN("99999" + 0X) *) OF CHAR;
+    n, nulls: INTEGER; str: ARRAY 5 + 1 (* LEN("99999" + 0X) *) OF CHAR;
   BEGIN
     ASSERT((num >= 0) & (num <= 99999), 1);
     Strings.IntToStr(num, str); Add(VAL); Add('"'); (* VAL "num" *)
-    n := 0; REPEAT Add(str[n]); INC(n) UNTIL str[n] = 0X; Add('"');
+    n := 0; nulls := 0;
+    REPEAT
+      IF str[n] # "0" THEN nulls := 0 ELSE INC(nulls) END;
+      Add(str[n]); INC(n);
+    UNTIL str[n] = 0X;
+    IF nulls >= 3 THEN (* Optimization: if num = "XX000" THEN use "XXe3": *) 
+      DEC(loaderLen, nulls); Add("e"); Add(CHR(nulls + ORD("0")));
+    END;
+    Add('"');
   END AddIntAsVAL;
 
 BEGIN
@@ -73,7 +81,3 @@ BEGIN
 END GenTapeLoader;
 
 END ZXBasic.
-
-(* TODO:
- implement optimization - if codeStartAddr = "XX000" THEN use "XXe3"
-*)

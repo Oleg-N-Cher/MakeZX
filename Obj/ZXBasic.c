@@ -29,17 +29,28 @@ static void Add__2 (SYSTEM_BYTE byte)
 
 static void AddIntAsVAL__4 (INTEGER num)
 {
-	INTEGER n;
+	INTEGER n, nulls;
 	CHAR str[6];
 	__ASSERT(num >= 0 && num <= 99999, 1);
 	Strings_IntToStr(num, (void*)str, 6);
 	Add__2(0xb0);
 	Add__2('\"');
 	n = 0;
+	nulls = 0;
 	do {
+		if (str[__X(n, 6)] != '0') {
+			nulls = 0;
+		} else {
+			nulls += 1;
+		}
 		Add__2(str[__X(n, 6)]);
 		n += 1;
 	} while (!(str[__X(n, 6)] == 0x00));
+	if (nulls >= 3) {
+		*GenTapeLoader__1_s->loaderLen -= nulls;
+		Add__2('e');
+		Add__2((CHAR)(nulls + 48));
+	}
 	Add__2('\"');
 }
 
