@@ -81,7 +81,7 @@ void ZXBasic_GenTapeLoader (INTEGER codeStartAddr, INTEGER *loaderLen, SYSTEM_BY
 		AddIntAsVAL__4(codeStartAddr);
 		Add__2(0x0d);
 		loader[__X(2, loader__len)] = (int)(*loaderLen - 4);
-		if ((LONGINT)*loaderLen >= loader__len) {
+		if ((LONGINT)*loaderLen > loader__len) {
 			*loaderLen = 0;
 		}
 	}

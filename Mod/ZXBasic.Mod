@@ -76,7 +76,7 @@ BEGIN
     loader[(*marked*) 2] := SHORT(loaderLen - (*marked*) 4);
     (* Uncomment this code if length of BASIC line > 255. *)
     (* loader[(*marked+1*)3] := SHORT((loaderLen -(*marked*)4) DIV 256); *)
-    IF loaderLen >= LEN(loader) THEN loaderLen := 0 END;
+    IF loaderLen > LEN(loader) THEN loaderLen := 0 END;
   END;
 END GenTapeLoader;
 
